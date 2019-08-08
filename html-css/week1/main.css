@@ -55,11 +55,21 @@ img {
 .header  {
   clear: both;
   margin: 60px 0 40px 0;
-  padding: 5px;
+  padding: 10px;
   text-align: center;
   border: 2px dashed black;
 }
 
 #experience {
+  clear: both;
+}
+
+#strategies {
+  clear: both;
+  width: 33%;
+  display: inline;
+}
+
+#hyf {
   clear: both;
 }
