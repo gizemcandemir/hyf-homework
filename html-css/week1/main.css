@@ -1,35 +1,85 @@
-body {
-  font-family: 'Roboto Slab', serif;
-  /* line-height: 1.6em; */
-  margin: 80px;
+/* Grid */
+
+* {
+  margin: 0;
+  padding: 0;
 }
 
+section {
+  padding: 0 80px;
+}
 
-img {
+.row {
+  margin: 0 0 2em 0;
+}
+
+.left-col {
+  width: 33%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.right-col {
+  width: 66%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.link-col {
+  display: inline-block;
+  width: 33%;
+  vertical-align: top;
+}
+
+.link col, h4 {
+  padding: 10px 0;
+}
+img { 
   border-radius: 150px;
 }
 
-.left {
-  clear: both;
-  width: 35%;
-  float: left;
-  display: block;
+/* -- */
+
+body {
+  font-family: 'Roboto Slab', serif;
+  line-height: 1.6em;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0 0 1em 0;
+}
+
+h2 {
+  padding-bottom: 1em;
+}
+
+a {
+  color: #ff6666;
+}
+a:visited { 
+  color: pink;
+}
+
+#info {
+  background: #2C2C2C;
+  color: #E2E2E2;
+  padding-top: 4em;
+  padding-bottom: 1em;
 }
 
 #keys {
   list-style-type: circle;
-  padding: 0 20px;
+  padding: 10px;
 }
 
-.right ul {
+.right-col ul {
   list-style: none;
   padding: 0px;
 }
 
-.title ul {
-  margin: 0px;
-  padding: 0px;
-}
 .title li {
   list-style: none; 
 }
@@ -44,32 +94,19 @@ img {
   font-style: italic;
 }
 
-.title {
-  height: 4em;
-}
-
-.detail {
-  display: block;
-}
-
 .header  {
-  clear: both;
-  margin: 60px 0 40px 0;
+  margin: 40px 0;
   padding: 10px;
   text-align: center;
-  border: 2px dashed black;
+  border-bottom: 2px dashed black;
+  border-top: 2px dashed black;
 }
 
-#experience {
-  clear: both;
+#links {
+  padding-bottom: 4em;
 }
 
-#strategies {
-  clear: both;
-  width: 33%;
-  display: inline;
-}
-
-#hyf {
-  clear: both;
+#links ul {
+  padding-left: 20px;
+  list-style-type: square;
 }
