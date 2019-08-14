@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="main.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <title>Web Development as an Industry</title>
+</head>
+<body>
+  <header class="header">
+    <h1>WEB DEVELOPMENT AS AN INDUSTRY</h1>
+    <p>an article about web development</p>
+  </header>
+
+  <nav class="nav">
+    <ul>
+      <li><a href="#home">home</a></li>
+      <li><a class="active" href="#about">about</a></li>
+      <li><a href="#our services">our services</a></li>
+      <li><a href="#our office">our office</a></li>
+    </ul>
+  </nav>
+
+  <main class="main">
+    <img class="hero" src="images/office.jpg" alt="Office picture">
+
+    <section class="row">
+      <aside class="aside">
+        <h4>WEB DEVELOPMENT AS AN INDUSTRY</h4>
+        <p>Examples of dramatic transformation in communication and commerce led by web development include e-commerce. Online auction sites such as eBay have changed the way consumers find and purchase goods and services. Online retailers such as Amazon.com and Buy.com (among many others) have transformed the shopping and bargain-hunting experience for many consumers. </p>
+      </aside>
+      <div class="content">
+        <h2>PRACTICAL WEB DEVELOPMENT</h2>
+        <p>Since the commercialization of the web, web development has been a growing industry. The growth of this industry is being driven by businesses wishing to use their website to advertise and sell products and services to customers.[1]</p>
+
+        <p>There are many open source tools for web development such as BerkeleyDB, GlassFish, LAMP (Linux, Apache, MySQL, PHP) stack and Perl/Plack. This has kept the cost of learning web development to a minimum. Another contributing factor to the growth of the industry has been the rise of easy-to-use WYSIWYG web-development software, such as Adobe Dreamweaver, BlueGriffon and Microsoft Visual Studio. Knowledge of HyperText Markup Language (HTML) or of programming languages is still required to use such software, but the basics can be learned and implemented quickly.</p>
+
+        <p>An ever-growing set of tools and technologies have helped developers build more dynamic and interactive websites. Further, web developers now help to deliver applications as web services which were traditionally only available as applications on a desk-based computer. This has allowed for many opportunities to decentralize information and media distribution. Examples can be seen with the rise of cloud services such as Adobe Creative Cloud, Dropbox and Google Drive. These web services allow users to interact with applications from many locations, instead of being tied to a specific workstation for their application environment.</p>
+      </div>
+    </section>
+    <section class="row">
+      <aside class="aside">
+        <h4>THE GALLERY</h4>
+        <p>Images to the right should be addedd as links. Each image should be responsive.</p>
+      </aside>
+      <div class="content logos">
+        <h2>LOGOTYPES ON THE WEB</h2>
+        <a href="#"><img src="images/logo1.png" alt=""></a>
+        <a href="#"><img src="images/logo2.png" alt=""></a>
+        <a href="#"><img src="images/logo3.png" alt=""></a>
+        <a href="#"><img src="images/logo4.png" alt=""></a>
+        <a href="#"><img src="images/logo5.png" alt=""></a>
+        <a href="#"><img src="images/logo6.png" alt=""></a>
+        <a href="#"><img src="images/logo7.png" alt=""></a>
+        <a href="#"><img src="images/logo8.png" alt=""></a>
+        <a href="#"><img src="images/logo9.png" alt=""></a>
+        <a href="#"><img src="images/logo10.png" alt=""></a>
+        <a href="#"><img src="images/logo11.png" alt=""></a>
+        <a href="#"><img src="images/logo12.png" alt=""></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="col">
+      <h3>FIND US</h3>
+      <div id="map"></div>
+      <p>
+        <strong>Hack Your Future Copenhagen</strong><br>
+        M-Th: 7am - 4pm<br>
+        Fri-Sat: 9am - 8pm
+      </p>
+    </div>
+
+    <div class="col">
+      <h3>ABOUT THIS PAGE</h3>
+      <p>This is a footer of the page for homework 02</p>
+    </div>
+
+    <div class="col">
+      <h3>ARCHIVES</h3>
+      <ul>
+        <li><a href="#march-2016">March 2016</a></li>
+        <li><a href="#february-2016">February 2016</a></li>
+        <li><a href="#january-2016">January 2016</a></li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <h3>NAVIGATION</h3>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <ul>
+          <li><a href="#history">History</a></li>
+        </ul>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#blog">Blog</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Google Maps script -->
+  <script>
+  // Initialize and add the map
+  function initMap() {
+    // The location of HYF-CPH
+    var hyf = {lat: 55.662074, lng: 12.540798};
+    // The map, centered at HYF-CPH
+    var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 10, center: hyf});
+      // The marker, positioned at HYF-CPH
+      var marker = new google.maps.Marker({position: hyf, map: map});
+    }
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+  -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRfIwnSPIk4S2V6AK8axHWUcjvlm2lKd8&callback=initMap">
+  </script>
+</body>
+</html>
