@@ -162,6 +162,10 @@ img.hero {
     font-size: 1em;
   }
 
+  .logos img {
+    width: 45%;
+  }
+
   .footer li {
     width: 100%;
     border: none;
