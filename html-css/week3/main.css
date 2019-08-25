@@ -1,0 +1,165 @@
+* {
+  box-sizing: border-box;
+}
+
+.pad-bottom {
+  padding-bottom: 2rem;
+}
+
+.pad-top {
+  padding-top: 2rem;
+}
+
+.progress-bar {
+  border: 1px solid #d7d7d7;
+  width: 100%;
+}
+
+.progress-bar-step {
+  background: #d7d7d7;
+  height: 2em;
+}
+
+.progress-bar .step-1 { width: 25%; }
+.progress-bar .step-2 { width: 50%; }
+.progress-bar .step-3 { width: 75%; }
+.progress-bar .step-4 { width: 95%; }
+.progress-bar .done { width: 100%; }
+
+input, select {
+  font-size: 1rem;
+  padding: 0.5rem 0.5rem;
+  margin: 0;
+  line-height: 1.5rem;
+  border: 1px solid gray;
+}
+
+body {
+  margin: 0 5%;
+  padding: 0 5%;
+  font-family: sans-serif;
+  line-height: 1.4em;
+}
+
+.nav {
+  padding-top: 2em;
+  padding-bottom: 3em;
+  display: flex;
+  justify-content: space-between;
+}
+
+h1 { font-size: 2rem; }
+h3 { font-size: 1rem; }
+
+main {
+  padding: 1rem 0 5rem 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.row .form-col {
+  flex: 0 0 50%;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.row .form-col.full-width {
+  flex-basis: 100%;
+}
+
+.row .form-col.half-width {
+  flex-basis: 50%;
+}
+
+
+.form-col label {
+  align-self: flex-start;
+  display: inline-block;
+  width: 10rem;
+  line-height: 1.5rem;
+  padding: 0.5rem 0;
+  font-weight: bold;
+  text-align: right;
+}
+
+.form-col input, .form-col select, .form-col textarea {
+  align-self: flex-end;
+  display: inline-block;
+  width: calc(100% - 11rem);
+}
+
+.form-col textarea {
+  height: 100px;
+}
+
+.row input::placeholder {
+  color: #999999;
+}
+
+.dropdown {
+  -webkit-appearance: none;
+  position: relative;
+  border-radius: 0;
+  display: inline-block;
+  background: url(expand.svg) no-repeat 98%;
+}
+
+.row label p {
+  font-size: 12px;
+  line-height: 1.1rem;
+  font-weight: normal;
+}
+
+.shipping-info {
+  padding: 2rem 0;
+}
+
+#shipping-check:checked ~ .expandable {
+  display: none;
+}
+
+.expandable {
+  display: block;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Form action */
+
+section.form-action {
+  display: flex;
+  flex-direction: column;
+}
+
+section.form-action input.next-step {
+  align-self: flex-end;
+}
+
+/* for the page after submitting */
+img.done {
+  display: block;
+  margin: 150px auto;
+}
+
+/* Mobile style */
+@media only screen and (max-width: 600px) {
+  .form-col label {
+    text-align: left;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}

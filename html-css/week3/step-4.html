@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="main.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <title>Your Custom Tailor - Sign Up Form</title>
+</head>
+<body>
+  <nav class="nav">
+    <a href="step-1.html">
+      <img src="logo.png" alt="Logo" />
+    </a>
+    <img src="navigation.png" alt="Navigation" />
+  </nav>
+
+  <header>
+    <h1>Sign up to yourcustomtailor.com</h1>
+  </header>
+
+  <main id="step-4">
+    <section id="form-4">
+      <h2>Step 4/4 - Payment</h2>
+      <form action="done.html">
+        <h3>Progress</h3>
+        <div class="progress-bar">
+          <div class="progress-bar-step step-4"></div>
+        </div>
+        <p class="pad-bottom">Please fill in your payment data</p>
+
+        <div class="row">
+          <div class="form-col half-width">
+            <label for="name">Name on card</label>
+            <input id="name" maxlength="20" type="text">
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="form-col half-width">
+            <label for="cardnumber">Card type</label>
+            <select name="card" class="dropdown">
+              <option value="visa">Visa</option>
+              <option value="mastercard">Master Card</option>
+              <option value="dankort">Dankort</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-col half-width">
+            <label for="cardnumber">Credit Card Number</label>
+            <input id="cardnumber" type="text" pattern="[0-9]*" inputmode="numeric">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-col half-width">
+            <label for="expiry-month">Expiry month</label>
+            <input id="expiry-month" type="text" pattern="[0-9]*" inputmode="numeric">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-col half-width">
+            <label for="expiry-year">Expiry year</label>
+            <input id="expiry-year" type="text" pattern="[0-9]*" inputmode="numeric">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-col half-width">
+            <label for="securitycode">CCV</label>
+            <input id="securitycode" type="text" pattern="[0-9]*" inputmode="numeric">
+          </div>
+        </div>
+
+
+      </form>
+    </section>
+
+    <section class="form-action">
+      <input type="submit" value="Next step" class="next-step">
+    </section>
+
+  </form>
+</main>
+</body>
+</html>

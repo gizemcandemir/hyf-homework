@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="main.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <title>Your Custom Tailor - Sign Up Form</title>
+</head>
+<body>
+  <nav class="nav">
+    <a href="step-1.html">
+      <img src="logo.png" alt="Logo" />
+    </a>
+    <img src="navigation.png" alt="Navigation" />
+  </nav>
+
+  <header>
+    <h1>Sign up to yourcustomtailor.com</h1>
+    <p>We can’t wait to help you improve your life-style and gain the attention from people around you!</p>
+    <p>Sign up below to save up to 70% on apparel, hand-bags and cosmetics. Our agents are busy picking the best offers that match your preferences and style. Every week we will send you a hand-picked selection - we just need to know a few details about your first…</p>
+  </header>
+
+  <main id="step-1">
+    <h2>Step 1/4 - tell us who you are?</h2>
+    <h3>Progress</h3>
+    <div class="progress-bar">
+      <div class="progress-bar-step step-1"></div>
+    </div>
+    <p class="pad-bottom">Nice to meet you. Let's spend a minute to get to know each other? Please enter the following:</p>
+
+    <form action="step-2.html" id="sign-up-form">
+
+      <section class="contact-info">
+        <div class="row">
+          <div class="form-col">
+            <label for="first-name">First name*</label>
+            <input type="text" name="firstname" id="first-name" placeholder="Your first name" required autofocus>
+          </div>
+          <div class="form-col">
+            <label for="last-name">Last name*</label>
+            <input type="text" name="lastname" id="last-name" required>
+          </div>
+          <div class="form-col">
+            <label for="country">Country*</label>
+            <select name="country" class="dropdown">
+              <option value="denmark">Denmark</option>
+              <option value="france">France</option>
+              <option value="germany">Germany</option>
+              <option value="turkey">Turkey</option>
+              <option value="uk">United Kingdom</option>
+            </select>
+          </div>
+        </div>
+        <div class="row pad-bottom">
+          <div class="form-col">
+            <label for="street-address">Street address*</label>
+            <input type="text" name="streetaddress" id="street-address" required>
+          </div>
+          <div class="form-col">
+            <label for="post-code">Post code*</label>
+            <input type="text" name="postcode" id="post-code" pattern="[0-9]{4}"required>
+          </div>
+        </div>
+      </section>
+
+      <section class="description">
+        <div class="row">
+          <div class="form-col full-width">
+            <label for="profile-description">
+              <h3>Profile description*</h3>
+              <p>Please provide a short description of yourself to be displayed on our social community pages.</p>
+            </label>
+            <textarea name="profile-description" placeholder="Write something ..." form="sign-up-form" maxlength:"500"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="shipping-info">
+
+        <input type="checkbox" id="shipping-check" name="shipping" checked>
+        <label for="shipping-check">Use the same address for billing and shipping</label>
+
+        <section class="expandable pad-top">
+          <div class="row">
+            <div class="form-col">
+              <label for="first-name">First name*</label>
+              <input type="text" name="firstname" id="first-name" placeholder="Your first name" required autofocus>
+            </div>
+            <div class="form-col">
+              <label for="last-name">Last name*</label>
+              <input type="text" name="lastname" id="last-name" required>
+            </div>
+            <div class="form-col">
+              <label for="country">Country*</label>
+              <select name="country" class="dropdown">
+                <option value="denmark">Denmark</option>
+                <option value="france">France</option>
+                <option value="germany">Germany</option>
+                <option value="turkey">Turkey</option>
+                <option value="uk">United Kingdom</option>
+              </select>
+            </div>
+          </div>
+          <div class="row pad-bottom">
+            <div class="form-col">
+              <label for="street-address">Street address*</label>
+              <input type="text" name="streetaddress" id="street-address" required>
+            </div>
+            <div class="form-col">
+              <label for="post-code">Post code*</label>
+              <input type="text" name="postcode" id="post-code" pattern="[0-9]{4}"required>
+            </div>
+          </div>
+        </section>
+
+        <section class="expandable">
+          <div class="row">
+            <div class="form-col full-width">
+              <label for="profile-description">
+                <h3>Profile description*</h3>
+                <p>Please provide a short description of yourself to be displayed on our social community pages.</p>
+              </label>
+              <textarea name="profile-description" placeholder="Write something ..." form="sign-up-form" maxlength:"500"></textarea>
+            </div>
+          </div>
+        </section>
+
+      </section>
+
+      <section class="form-action">
+        <input type="submit" value="Next step" class="next-step">
+      </section>
+    </form>
+  </main>
+</body>
+</html>
