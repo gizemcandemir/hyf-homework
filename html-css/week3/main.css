@@ -2,13 +2,8 @@
   box-sizing: border-box;
 }
 
-.pad-bottom {
-  padding-bottom: 2rem;
-}
-
-.pad-top {
-  padding-top: 2rem;
-}
+.mb { margin-bottom: 2rem; }
+.mt { margin-top: 2rem; }
 
 .progress-bar {
   border: 1px solid #d7d7d7;
