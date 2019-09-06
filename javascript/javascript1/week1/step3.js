@@ -32,3 +32,11 @@ const housePriceJulia = volumeInMetersJulia * 2.5 * 1000 + gardenSizeInM2Julia *
 console.log("Julia payed too much : ", paymentJulia > housePriceJulia);
 
 
+// Ez Namey (Startup name generator)
+
+const firstWords = ["Nordic", "Smart", "Awesome", "Remarkable", "Elegant", "Easy", "Perfect", "Premium", "Iconic", "First-class"]
+const secondWords = ["Lane", "Bulletin", "Corporate", "Bureaux", "K-pop", "Conversation", "Boutique", "Boulevard", "Wardrobe", "Uniforms "]
+const randomNumber = Math.floor(Math.random() * 10) + 0
+const startupName = firstWords[randomNumber] + " " + secondWords[randomNumber];
+
+console.log("The Startup \"", startupName, "\" contains ", startupName.length, "characters");
