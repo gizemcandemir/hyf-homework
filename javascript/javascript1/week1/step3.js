@@ -3,7 +3,7 @@
 const yearOfBirth = 1982;
 const yearFuture = 2045;
 const age = yearFuture - yearOfBirth;
-console.log("You will be ", age, " years old in 2027");
+console.log("You will be " + age + " years old in 2027");
 
 
 // Goodboy-Oldboy (A dog age calculator)
@@ -11,25 +11,22 @@ console.log("You will be ", age, " years old in 2027");
 const dogYearOfBirth = 2017;
 const dogYearFuture = 2027;
 const dogYear = dogYearFuture - dogYearOfBirth;
-const shouldShowResultInDogYears = dogYear * 7;
-console.log("Your dog will be ", shouldShowResultInDogYears, "dog years old in 2027")
+const shouldShowResultInDogYears = true;
+const dogAge = dogYear * 7;
+if (shouldShowResultInDogYears == true) {
+  console.log("Your dog will be " + dogAge + " dog years old in 2027")
+}
 
 
 // Housey pricey (A house price estimator)
 
-const volumeInMetersPeter = 8 * 10 * 10;
-const gardenSizeInM2Peter = 100;
-const paymentPeter = 2500000;
-const housePricePeter = volumeInMetersPeter * 2.5 * 1000 + gardenSizeInM2Peter * 300;
+const volumeInMeters = [(8 * 10 * 10),(5 * 11 * 8)];
+const gardenSizeInM2 = [100,70];
+const payment = [2500000, 1000000]
+const housePrice = [(volumeInMeters[0] * 2.5 * 1000 + gardenSizeInM2[0] * 300), (volumeInMeters[1] * 2.5 * 1000 + gardenSizeInM2[1] * 300)]
 
-console.log("Peter payed too much : ", paymentPeter > housePricePeter);
-
-const volumeInMetersJulia = 5 * 11 * 8;
-const gardenSizeInM2Julia = 70;
-const paymentJulia = 1000000;
-const housePriceJulia = volumeInMetersJulia * 2.5 * 1000 + gardenSizeInM2Julia * 300;
-
-console.log("Julia payed too much : ", paymentJulia > housePriceJulia);
+console.log("Peter payed too much : ", payment[0] > housePrice[0]);
+console.log("Julia payed too much : ", payment[1] > housePrice[1]);
 
 
 // Ez Namey (Startup name generator)
