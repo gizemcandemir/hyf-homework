@@ -12,7 +12,7 @@ function whatToWear(degree) {
   } else if (degree <= 0) {
     return text + clothesToWear[4];
   } else {
-    return "and I don't know what to wear?";
+    return "in this case I don't know what to wear.";
   }
 }
 
