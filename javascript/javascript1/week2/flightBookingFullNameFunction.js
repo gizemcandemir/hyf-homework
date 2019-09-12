@@ -1,20 +1,20 @@
 function getFullName (firstName, surname, useFormalName) {
   if (useFormalName == undefined) {
-    const fullName = firstName + " " + surname;  
-    return (fullName);
+    const fullname = firstName + " " + surname;  
+    return (fullname);
   } else if (useFormalName == true) {
-    const fullName = "Lord " + firstName + " " + surname;  
-    return (fullName);
+    const fullname = "Lord " + firstName + " " + surname;  
+    return (fullname);
   } else {
-    const fullName = firstName + " " + surname;
-    return (fullName);
+    const fullname = firstName + " " + surname;
+    return (fullname);
   }
 }
 
-const fullName1 = getFullName("Gizem", "Candemir", true);
-const fullName2 = getFullName("Jane", "Smith", false);
-const fullName3 = getFullName("Oya", "Kilicoglu");
+const fullname1 = getFullName("Gizem", "Candemir", true);
+const fullname2 = getFullName("Jane", "Smith", false);
+const fullname3 = getFullName("Oya", "Kilicoglu");
 
-console.log(fullName1);
-console.log(fullName2);
-console.log(fullName3);
+console.log(fullname1);
+console.log(fullname2);
+console.log(fullname3);
