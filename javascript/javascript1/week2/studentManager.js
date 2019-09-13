@@ -25,3 +25,9 @@ console.log(addStudentToClass("Joe"));
 console.log(addStudentToClass("Jack"));
 console.log(addStudentToClass("Margrethe II"));
 console.log(class07Students);
+
+function getNumberOfStudents () {
+  return "The number of students in Class 07 is: " + (class07Students.length);
+}
+
+console.log(getNumberOfStudents());
