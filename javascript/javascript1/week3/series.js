@@ -1,12 +1,12 @@
 const seriesDurations = [
   {
-    title: 'Game of thrones',
+    title: 'Game of Thrones',
     days: 3,
     hours: 1,
     minutes: 0,  
   },
   {
-    title: 'Orange is the new black',
+    title: 'Orange Is The New Black',
     days: 3,
     hours: 19,
     minutes: 0,
@@ -20,30 +20,22 @@ const seriesDurations = [
 ]
 
 const avgLifeSpanInMin = 80*365*24*60;
-console.log(avgLifeSpanInMin);
+// console.log(avgLifeSpanInMin);
 
-console.log(`${seriesDurations.title} took  of my life`);
-
-let totalMinutesOfSeries = 0;
 let totalDays = 0;
 let totalHours = 0;
+let totalMinutesOfSeries = 0;
+let grandTotalInMinutes = 0;
+let totalTimeSpent = 0;
 
 for (let i=0; i<seriesDurations.length; i++) { 
-  // console.log(seriesDurations[i].days);
-  totalDays = totalDays + seriesDurations[i].days;
-  totalDaysInMinutes = totalDays*24*60;
-  console.log(`total days: ${totalDaysInMinutes}`);
+  totalMinutesPerSeries = seriesDurations[i].days*24*60 + seriesDurations[i].hours*60 + seriesDurations[i].minutes;
+  grandTotalInMinutes += totalMinutesPerSeries;
+  const percentageInLife = totalMinutesPerSeries*100/avgLifeSpanInMin;
+  
+  console.log(`${seriesDurations[i].title} took ${percentageInLife.toFixed(3)} of my life`);
 
-  totalHours = totalHours + seriesDurations[i].hours;
-  totalHoursInMinutes = totalHours*60;
-  console.log(`total hours: ${totalHoursInMinutes}`);
-
-  totalMinutes = totalMinutesOfSeries + seriesDurations[i].hours; 
-  console.log(`total minutes: ${totalMinutes}`);
-
-  const grandTotalInMinutes = totalDaysInMinutes + totalHoursInMinutes + totalMinutes;
-  console.log(`grand total in minutes is: ${grandTotalInMinutes}`);
-
-  const timeSpent = grandTotalInMinutes*100/avgLifeSpanInMin;
-  console.log(timeSpent);
+  totalTimeSpent = grandTotalInMinutes*100/avgLifeSpanInMin;
 }
+
+console.log(`\nIn total that is ${totalTimeSpent.toFixed(2)}% of my life`);
