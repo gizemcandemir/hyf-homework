@@ -22,7 +22,7 @@ const songDatabase = [{
 
 const myPlaylist = [];
 
-const song = [{
+const newSongs = [{
   songId: songDatabase.length+1,
   title: 'Gunes Yerinde',
   artist: 'Buyuk Ev Ablukada',
@@ -39,15 +39,16 @@ const song = [{
 },
 ]
 
-// console.log(song);
+// just to test:
+// console.log(newSongs);
 
-function addSongToDatabase(newSong) {
-  for (let i=0; i<newSong.length; i++) {
-    songDatabase.push(newSong[i]);
+function addSongToDatabase(song) {
+  for (let i=0; i<song.length; i++) {
+    songDatabase.push(song[i]);
   }
 }
 
-addSongToDatabase(song); 
+addSongToDatabase(newSongs); 
 
 // I think this function doesn't need to return anything, since it's doing its job by pushing the new object's keys&values but just to see the updated database i use console.log to see the current database.
 
