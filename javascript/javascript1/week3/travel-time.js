@@ -3,10 +3,11 @@ const travelInformation = {
   destinationDistance: 432,
 };
 
-const travelInformation2 = {
-  speed: 25,
-  destinationDistance: 432,
-};
+// for testing
+// const travelInformation2 = {
+//   speed: 25,
+//   destinationDistance: 432,
+// };
 
  function calculateTravelTime(travelInformationObject) {
   const kmH = travelInformationObject.speed;
@@ -17,5 +18,6 @@ const travelInformation2 = {
 }
 
 const travelTime = calculateTravelTime(travelInformation);
-const travelTime2 = calculateTravelTime(travelInformation2);
-console.log(travelTime, travelTime2); // 4 hours and 42 minutes
+// const travelTime2 = calculateTravelTime(travelInformation2);
+console.log(travelTime); // 4 hours and 42 minutes
+// console.log(travelTime2);
