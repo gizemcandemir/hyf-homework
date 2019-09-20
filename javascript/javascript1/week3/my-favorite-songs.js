@@ -22,34 +22,86 @@ const songDatabase = [{
 
 const myPlaylist = [];
 
-const newSongs = [{
-  songId: songDatabase.length+1,
+const favorites = [{
+  songId: 5,
   title: 'Gunes Yerinde',
   artist: 'Buyuk Ev Ablukada',
 },
 {
-  songId: songDatabase.length+2,
+  songId: 6,
   title: 'Ya Sonra',
   artist: 'Ajda Pekkan',
 },
 {
-  songId: songDatabase.length+3,
+  songId: 7,
   title: 'Hal Hal',
   artist: 'Baris Manco',
 },
+{
+  songId: 8,
+  title: 'Hal Hal',
+  artist: 'Sezen Aksu',
+},
 ]
 
-// just to test:
-// console.log(newSongs);
+// we can see the current database:
+// console.log(songDatabase);
+
+// and see new song to be added:
+// console.log(favorites);
 
 function addSongToDatabase(song) {
-  for (let i=0; i<song.length; i++) {
-    songDatabase.push(song[i]);
+  if (songDatabase.push(song)) {
+    return song;
   }
 }
 
-addSongToDatabase(newSongs); 
+function addSongsToDatabase(songs) {
+  addedSongs = [];
+  for (let i=0; i<songs.length; i++) {
+    addedSongs.push(addSongToDatabase(songs[i]));
+    console.log(`'${addedSongs[addedSongs.length-1].title}' added to the database.`);
+  }
+  console.log(`\nTotal of ${addedSongs.length} songs added to the database.\n`);  
+  return addedSongs;
+}
 
-// I think this function doesn't need to return anything, since it's doing its job by pushing the new object's keys&values but just to see the updated database i use console.log to see the current database.
+addSongsToDatabase(favorites)
 
-console.log(songDatabase);
+// console.log(songDatabase);
+// [
+//   { songId: 1, title: 'My baby', artist: 'Soggy socks' },
+//   { songId: 2, title: '3 nails in wood', artist: 'The carpenters' },
+//   { songId: 3, title: 'Blacker than black', artist: 'Instant coffee' },
+//   {
+//     songId: 4,
+//     title: 'When is enough too little?',
+//     artist: 'The spies girls'
+//   },
+//   { songId: 5, title: 'Gunes Yerinde', artist: 'Buyuk Ev Ablukada' },
+//   { songId: 6, title: 'Ya Sonra', artist: 'Ajda Pekkan' },
+//   { songId: 7, title: 'Hal Hal', artist: 'Baris Manco' }
+// ]
+
+
+function getSongByTitle(title) {
+  foundTitle = false;
+  const regex = new RegExp(title, 'i');
+
+  for (let i=0; i<songDatabase.length; i++) {
+    if (songDatabase[i].title.match(regex)) {
+      foundTitle = true;
+      console.log(`Found '${title}' in ${songDatabase[i].title}`);
+    } 
+  } 
+
+  if (!foundTitle) {
+    console.log(`Found '${title}' could not be found.`);
+  }
+  
+  return;
+}
+
+getSongByTitle('Hal Hal');
+getSongByTitle('hal');
+getSongByTitle('Ya Sonra');
