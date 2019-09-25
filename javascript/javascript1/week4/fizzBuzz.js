@@ -1,13 +1,19 @@
-const fibonacciNumbers = [];
+const a = 'Fizz';
+const b = 'Buzz';
 
-function fibonacci(num){
-  for (let i = 2; i < num; i++){
-    fibonacciNumbers[0] = 0;
-    fibonacciNumbers[1] = 1;
-    fibonacciNumbers[i] = fibonacciNumbers[i-1] + fibonacciNumbers[i-2];
-    fibonacciNumbers.push(fibonacciNumbers[i]);
-  } return fibonacciNumbers;
-}
+// function fizzBuzz(){
+  for (let i = 1; i <= 100; i++){
+    if (i%3 == 0 && i%5 == 0){
+      console.log(a+b);
+    } else if (i%3 == 0){
+      console.log(a);
+    } else if (i%5 == 0){
+      console.log(b);
+    } else {
+      console.log(i);
+    }
+  } 
+// }
 
-console.log(fibonacci(5));
-// [ 0, 1, 1, 2, 3, 3 ] why does it repeat the last element??
+
+// console.log(fizzBuzz(4,12));
