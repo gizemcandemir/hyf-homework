@@ -21,6 +21,15 @@ function getReply(command) {
   if (command.includes('Add') && command.includes('to my todo')) {
     return addTodo(command);
   }
+
+  if (command.includes('Remove') && command.includes('from my todo')) {
+    return removeTodo(command);
+  }
+  
+  if (command.includes('What is on my todo?')) {
+    return listTodo(command);
+  }
+  
 }
 
 function getNameAndGreet(command) {
@@ -46,12 +55,26 @@ function addTodo(command) {
   return `'${todo}' has been added to your todo.\n`;
 }
 
-// function removeTodo() {}
-//
-// function addTodo() {}
-//
-// function listTodo() {}
-//
+function removeTodo(command) {
+  patternStart = "Remove ";
+  patternEnd = " from my todo";
+
+  todo = command.split(patternStart).pop().split(patternEnd)[0];
+  for( let i = 0; i < todoList.length; i++){ 
+    if ( todoList[i] === todo) {
+      todoList.splice(i, 1); 
+    }
+ } return `'${todo}' has been removed from your todo.\n`;
+}
+
+function listTodo(command) {
+  if (todoList.length === 0) {
+    return `Your todo list is empty.`
+  } else {
+    return `${todoList}`;
+  }
+}
+
 // function whatIsTheDate() {}
 //
 // function addFavoriteDish() {}
@@ -66,4 +89,11 @@ function addTodo(command) {
 
 console.log(getReply(`Hello my name is Anna Maria`));
 console.log(getReply('What is my name?'));
+console.log(getReply('Add fishing to my todo'));
 console.log(getReply('Add singing in the shower to my todo'));
+console.log(getReply('Add painting to my todo'));
+console.log(getReply('Remove fishing from my todo'));
+console.log(getReply('Remove singing in the shower from my todo'));
+console.log(getReply('Remove painting from my todo'));
+console.log(todoList);
+console.log(getReply('What is on my todo?'));
