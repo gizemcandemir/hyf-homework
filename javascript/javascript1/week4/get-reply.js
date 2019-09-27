@@ -3,6 +3,7 @@ let command;
 let name;
 let debug = true;
 let todoList = [];
+const today = new Date();
 
 let introductionPattern = "Hello my name is ";
 
@@ -10,6 +11,7 @@ function getReply(command) {
   if (debug) {
     console.log("- " + command);
   }
+  // const lowerCaseCommand = command.toLowerCase();
   if (command.includes(introductionPattern)) {
     return getNameAndGreet(command);
   }
@@ -30,6 +32,13 @@ function getReply(command) {
     return listTodo(command);
   }
   
+  if (command.includes('What day is it today?')) {
+    return whatIsTheDate(command);
+  }
+
+  // if (command.includes('What is') && command.includes(int)) {
+  //   return calculate(command);
+  // }
 }
 
 function getNameAndGreet(command) {
@@ -69,14 +78,32 @@ function removeTodo(command) {
 
 function listTodo(command) {
   if (todoList.length === 0) {
-    return `Your todo list is empty.`
+    return `Your todo list is empty.\n`
   } else {
     return `${todoList}`;
   }
 }
 
-// function whatIsTheDate() {}
-//
+function whatIsTheDate(command) {
+  const day = today.getDate();
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const month = months[today.getMonth()];
+  const year = today.getFullYear();
+  if (day === 1 ){
+    return `Today is ${day}st of ${month} ${year}.\n`;
+  } else if (day === 2) {
+    return `Today is ${day}nd of ${month} ${year}.\n`;
+  } else {
+    return `Today is ${day}th of ${month} ${year}.\n`;
+  }
+}
+
+function calculate(command) {
+  patternStart = "What is ";
+  mathInput = command.split(patternStart).pop();
+  return mathInput;
+}
+
 // function addFavoriteDish() {}
 //
 // function listFavoriteDish() {}
@@ -87,13 +114,15 @@ function listTodo(command) {
 //
 // function listMyCalendar() {}
 
-console.log(getReply(`Hello my name is Anna Maria`));
+console.log(getReply(`Hello my name is Anna Maria.`));
 console.log(getReply('What is my name?'));
-console.log(getReply('Add fishing to my todo'));
-console.log(getReply('Add singing in the shower to my todo'));
-console.log(getReply('Add painting to my todo'));
-console.log(getReply('Remove fishing from my todo'));
-console.log(getReply('Remove singing in the shower from my todo'));
-console.log(getReply('Remove painting from my todo'));
-console.log(todoList);
+console.log(getReply('Add fishing to my todo.'));
+console.log(getReply('Add singing in the shower to my todo.'));
+console.log(getReply('Add painting to my todo.'));
+console.log(getReply('Remove fishing from my todo.'));
+console.log(getReply('Remove singing in the shower from my todo.'));
+console.log(getReply('Remove painting from my todo.'));
+// console.log(todoList);
 console.log(getReply('What is on my todo?'));
+console.log(getReply('What day is it today?'));
+console.log(getReply('What is 3 + 3'));
