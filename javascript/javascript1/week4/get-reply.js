@@ -4,6 +4,7 @@ let name;
 let debug = true;
 let todoList = [];
 const today = new Date();
+let favDish;
 
 let introductionPattern = "Hello my name is ";
 
@@ -36,9 +37,18 @@ function getReply(command) {
     return whatIsTheDate(command);
   }
 
-  // if (command.includes("What is") && command.includes(int)) {
-  //   return calculate(command);
-  // }
+  if (command.includes("What is") && command.includes("+") || command.includes("-") || command.includes("*") || command.includes("/")) {
+    return calculate(command);
+  }
+  
+  if (command.includes("My favorite dish is ")) {
+    return addToFavDish(command);
+  }
+
+  if (command.includes("What is my favorite dish?")) {
+    return whatIsMyFavDish(command);
+  }
+
 }
 
 function getNameAndGreet(command) {
@@ -67,13 +77,13 @@ function addTodo(command) {
 function removeTodo(command) {
   patternStart = "Remove ";
   patternEnd = " from my todo";
-
+  
   todo = command.split(patternStart).pop().split(patternEnd)[0];
   for( let i = 0; i < todoList.length; i++){ 
     if ( todoList[i] === todo) {
       todoList.splice(i, 1); 
     }
- } return `'${todo}' has been removed from your todo.\n`;
+  } return `'${todo}' has been removed from your todo.\n`;
 }
 
 function listTodo(command) {
@@ -101,7 +111,23 @@ function whatIsTheDate(command) {
 function calculate(command) {
   patternStart = "What is ";
   mathInput = command.split(patternStart).pop();
-  return mathInput;
+  return `mathInput\n`;
+}
+
+function addToFavDish(command) {
+  patternStart = "My favorite dish is ";
+
+  favDish = command.split(patternStart).pop();
+
+  return `'${favDish}' has been saved as your favorite dish.\n`;
+}
+
+function whatIsMyFavDish(command) {
+  if (favDish === undefined) {
+    return "I don't know yet. Please tell me your name.";
+  } else {
+    return `Your favorite dish is ${favDish}.\n`;
+  }
 }
 
 // function addFavoriteDish() {}
@@ -126,3 +152,5 @@ console.log(getReply("Remove painting from my todo."));
 console.log(getReply("What is on my todo?"));
 console.log(getReply("What day is it today?"));
 console.log(getReply("What is 3 + 3"));
+console.log(getReply("My favorite dish is spaghetti"));
+console.log(getReply("What is my favorite dish?"));
