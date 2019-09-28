@@ -16,27 +16,27 @@ function getReply(command) {
     return getNameAndGreet(command);
   }
 
-  if (command.includes('What is my name')) {
+  if (command.includes("What is my name")) {
     return whatIsMyName(command);
   }
 
-  if (command.includes('Add') && command.includes('to my todo')) {
+  if (command.includes("Add") && command.includes("to my todo")) {
     return addTodo(command);
   }
 
-  if (command.includes('Remove') && command.includes('from my todo')) {
+  if (command.includes("Remove") && command.includes("from my todo")) {
     return removeTodo(command);
   }
   
-  if (command.includes('What is on my todo?')) {
+  if (command.includes("What is on my todo?")) {
     return listTodo(command);
   }
   
-  if (command.includes('What day is it today?')) {
+  if (command.includes("What day is it today?")) {
     return whatIsTheDate(command);
   }
 
-  // if (command.includes('What is') && command.includes(int)) {
+  // if (command.includes("What is") && command.includes(int)) {
   //   return calculate(command);
   // }
 }
@@ -48,7 +48,7 @@ function getNameAndGreet(command) {
 
 function whatIsMyName(command) {
   if (name === undefined) {
-    return `I don't know yet. Please tell me your name.`;
+    return "I don't know yet. Please tell me your name.";
   } else {
     return `Your name is ${name}.\n`;
   }
@@ -78,7 +78,7 @@ function removeTodo(command) {
 
 function listTodo(command) {
   if (todoList.length === 0) {
-    return `Your todo list is empty.\n`
+    return "Your todo list is empty.\n";
   } else {
     return `${todoList}`;
   }
@@ -86,7 +86,7 @@ function listTodo(command) {
 
 function whatIsTheDate(command) {
   const day = today.getDate();
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const month = months[today.getMonth()];
   const year = today.getFullYear();
   if (day === 1 ){
@@ -114,15 +114,15 @@ function calculate(command) {
 //
 // function listMyCalendar() {}
 
-console.log(getReply(`Hello my name is Anna Maria.`));
-console.log(getReply('What is my name?'));
-console.log(getReply('Add fishing to my todo.'));
-console.log(getReply('Add singing in the shower to my todo.'));
-console.log(getReply('Add painting to my todo.'));
-console.log(getReply('Remove fishing from my todo.'));
-console.log(getReply('Remove singing in the shower from my todo.'));
-console.log(getReply('Remove painting from my todo.'));
+console.log(getReply("Hello my name is Anna Maria."));
+console.log(getReply("What is my name?"));
+console.log(getReply("Add fishing to my todo."));
+console.log(getReply("Add singing in the shower to my todo."));
+console.log(getReply("Add painting to my todo."));
+console.log(getReply("Remove fishing from my todo."));
+console.log(getReply("Remove singing in the shower from my todo."));
+console.log(getReply("Remove painting from my todo."));
 // console.log(todoList);
-console.log(getReply('What is on my todo?'));
-console.log(getReply('What day is it today?'));
-console.log(getReply('What is 3 + 3'));
+console.log(getReply("What is on my todo?"));
+console.log(getReply("What day is it today?"));
+console.log(getReply("What is 3 + 3"));
