@@ -1,30 +1,41 @@
-const positiveWordsList = ['love', 'good', 'nice', 'super', 'cool', 'mega', 'awesome',];
-const negativeWordsList = ['hate', 'bad', 'horrible', 'boring'];
+const dictionary = {
+  "positiveWords": ["love", "good", "nice", "super", "cool", "mega", "awesome"],
+  "negativeWords": ["hate", "bad", "horrible", "boring"]
+};
 
-const sentimentScoreObject = {
-  score: 0, 
-  positiveWords: [],
-  negativeWords: []
-}
+const debug = true;
 
-const sentence1 = 'I am mega super awesome happy';
-const sentence2 = 'I hate doing boring stuff';
+function analyze(sentence) {
+  const sentimentScoreObject = {
+    "score": 0,
+    "positiveWords": [],
+    "negativeWords": []
+  };
 
-let words = [];
+  let words = sentence.split(" ");
+  // console.log(words);
+  let sentimentVar = "";
 
-function analyze(string){
-  let words = string.split(' ');
-  console.log(words);
-  for (let i = 0; i < words.length; i++) {
-    if (positiveWordsList.includes(words[i])) {
-      sentimentScoreObject.score = sentimentScoreObject.score + 1;
+  for (let i=0; i<words.length; i++) {
+    if (dictionary.positiveWords.includes(words[i])) {
+      sentimentScoreObject.score += 1;
       sentimentScoreObject.positiveWords.push(words[i]);
-    } else if (negativeWordsList.includes(words[i])){
-      sentimentScoreObject.score = sentimentScoreObject.score - 1;
+    } else if (dictionary.negativeWords.includes(words[i])){
+      sentimentScoreObject.score -= 1;
       sentimentScoreObject.negativeWords.push(words[i]);
-    } 
-  } return sentimentScoreObject;
+    }
+  }
+
+  if (sentimentScoreObject.score > 0) {
+    sentimentVar = "positive";
+  } else {
+    sentimentVar = "negative";
+  }
+  if (debug) {
+    console.log(`"${sentence}"`);
+  }
+  return `This is a ${sentimentVar} sentence. Here is the details:\n${JSON.stringify(sentimentScoreObject)}\n`;
 }
 
-console.log(analyze(sentence1));
-// console.log(analyze(sentence2));
+console.log(analyze("I am mega super awesome happy"));
+console.log(analyze("I hate doing boring stuff"));
