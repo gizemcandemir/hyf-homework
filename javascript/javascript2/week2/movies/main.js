@@ -76,8 +76,12 @@ movies
 		});
 	});
 
-wordCounts.sort((a, b) => b.count > a.count);
+wordCounts.sort((a, b) => b.count - a.count);
 
 console.log(
 	`The most duplicated word is "${wordCounts[0].word}". It's duplicated ${wordCounts[0].count} times.`
 );
+
+
+// Calculate the average rating of all the movies using reduce. Optional
+
