@@ -193,7 +193,6 @@ function thisWeekInCalendar() {
 
   for (let i = 0; i < myCalendar.length; i++) {
     if (currentWeekNumber === getWeekNumber(myCalendar[i].date)) {
-
       const name  = myCalendar[i].name;
       const day   = myCalendar[i].date.getDate();
       const month = months[myCalendar[i].date.getMonth()];
