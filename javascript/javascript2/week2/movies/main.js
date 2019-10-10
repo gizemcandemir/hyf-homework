@@ -1,15 +1,29 @@
-// console.log(movies.length); // 6527 movies
+console.log(movies.length); // 6527 movies
+
+// 1. Create an array of movies containing the movies with a short title (you define what short means)
 
 const shortNameMovies = movies.filter(movie => movie.title.length <= 10);
-// console.log(shortNameMovies); // 2132 movies
+
+console.log(shortNameMovies); // 2132 movies
+
+
+// 2. Create an array of movie titles with long movie titles
 
 const longNameMovies = movies.filter(movie => movie.title.length > 10);
-// console.log(longNameMovies); // 4395 movies
+
+console.log(longNameMovies); // 4395 movies
+
+
+// 3. Count the number of movies made between 1980-1989 (including both the years)
 
 const moviesFromEighties = movies.filter(
 	movie => movie.year >= 1980 && movie.year <= 1989
 );
-// console.log(moviesFromEighties); // 638 movies
+
+console.log(moviesFromEighties); // 638 movies
+
+
+// 4. Create a new array that has an extra key called tag. The tag is based on the rating: Good (>= 7), Average (>= 4 and < 7), Bad (< 4)
 
 const newKeyTag = movies.map(movie => {
 	if (movie.rating >= 7) {
@@ -20,12 +34,20 @@ const newKeyTag = movies.map(movie => {
 		movie.tag = "Bad";
 	}
 });
-// console.log(movies); // all array with the new tag for each movie object
+
+console.log(movies); // all array with the new tag for each movie object
+
+
+// 5. Using chaining, first filter the movies array to only contain the movies rated higher than 6. Now map the movies array to only the rating of the movies.
 
 const moviesRatingsArr = movies
 	.filter(movie => movie.rating > 6)
-	.map(movie => movie.rating);
-// console.log(moviesRatingsArr); // 4904 movies ratings
+  .map(movie => movie.rating);
+  
+console.log(moviesRatingsArr); // There are 4904 movies rated above 6.
+
+
+// 6. Count the total number of movies containing any of following keywords: Surfer, Alien or Benjamin. So if there were 3 movies that contained Surfer, 1 with Alien and 2 with Benjamin, you would return 6. Can you make sure the search is case insensitive?
 
 const keywords = ["Surfer", "Alien", "Benjamin"];
 
@@ -43,7 +65,10 @@ function doesItHaveKeyword(title) {
 	return keywordTitle;
 }
 
-// console.log(moviesWithKeywordsInTitle); // 19 movies
+console.log(moviesWithKeywordsInTitle); // 19 movies with keywords in their title.
+
+
+// 7. Create an array of movies where a word in the title is duplicated. Fx "Star Wars: The Clone Wars" the word Wars is duplicated.
 
 const titlesWithDuplicateWords = [];
 
@@ -57,7 +82,10 @@ movies
 		)
 	);
 
-// console.log(titlesWithDuplicateWords); // 124 movies
+console.log(titlesWithDuplicateWords); // 124 movies with duplicate words.
+
+
+// 8. Find the word that is mostly duplicated using sort Optional
 
 let wordCounts = [];
 
@@ -83,5 +111,25 @@ console.log(
 );
 
 
-// Calculate the average rating of all the movies using reduce. Optional
+// 9. Calculate the average rating of all the movies using reduce. Optional
 
+const averageRating = (
+	movies.reduce((acc, movie) => acc + movie.rating, 0) / movies.length
+).toFixed(2);
+
+console.log(`The average rating of the movies is: ${averageRating}.`); //6.63
+
+
+// 10. Count the total number of Good, Average and Bad movies using reduce. Optional
+
+const goodMovies = movies.map(movie => movie.tag === "Good");
+const averageMovies = movies.map(movie => movie.tag === "Average");
+const badMovies = movies.map(movie => movie.tag === "Bad");
+
+const goodMoviesCount = goodMovies.reduce((acc, movie) => acc + movie);
+const averageMoviesCount = averageMovies.reduce((acc, movie) => acc + movie);
+const badMoviesCount = badMovies.reduce((acc, movie) => acc + movie);
+
+console.log(
+	`There are ${goodMoviesCount} good movies, ${averageMoviesCount} average movies and ${badMoviesCount} bad movies in the movies array.`
+); // There are 2602 good movies, 3837 average movies and 88 bad movies in the movies array.
