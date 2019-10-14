@@ -4,8 +4,7 @@ console.log("Script loaded");
 const testProductNames = ["Flat screen", "Mobile phone", "Wallet"];
 
 function renderProducts(array) {
-  const productList = document.querySelector(".products > ul");
-  productList.innerHTML = "";
+	const productList = document.querySelector(".products > ul");
 	for (let i = 0; i < array.length; i++) {
 		const product = array[i];
 		const productLi = document.createElement("li");
@@ -33,10 +32,18 @@ function renderProduct(product) {
 	productDetails.appendChild(ratingLi);
 
 	const shipsToLi = document.createElement("li");
-	shipsToLi.classList.add("shipsTo");
+	shipsToLi.classList.add("ships-to");
 	shipsToLi.appendChild(renderShipsTo(product.shipsTo));
-  productDetails.appendChild(shipsToLi);
+	productDetails.appendChild(shipsToLi);
 
+	// (add to cart button added on week 2 for the part 2 of the homework)
+	const addToCartButton = document.createElement("button");
+	addToCartButton.innerHTML = "<h3>Add to cart</h3>";
+	addToCartButton.classList.add("add-to-cart");
+	productDetails.appendChild(addToCartButton);
+
+	addToCartButton.addEventListener("click", () => addToCart(product));
+	
 	return productDetails;
 }
 
@@ -69,21 +76,35 @@ sortBy.addEventListener("change", () => search());
 search(); // inital search to sort the list according to the default selection
 
 function search(query) {
-  let matchingProducts = products
-  .filter(product => product.name.toLocaleLowerCase().includes(searchInput.value.toLocaleLowerCase()))
-  .filter(product => product.price <= maxPrice.value)
-  
-  if (countrySelection.value !== "Everywhere") {
-    matchingProducts = matchingProducts.filter(product => product.shipsTo.includes(countrySelection.value));  
-  }
+	let matchingProducts = products
+		.filter(product =>
+			product.name
+				.toLocaleLowerCase()
+				.includes(searchInput.value.toLocaleLowerCase())
+		)
+		.filter(product => product.price <= maxPrice.value);
 
-  if (sortBy.value === "cheap") {
-    matchingProducts.sort((a, b) => a.price - b.price)
-  } else if (sortBy.value === "expensive") {
-    matchingProducts.sort((a, b) => b.price - a.price)
-  } else if (sortBy.value === "name") {
-    matchingProducts.sort((a, b) => a.name > b.name)
-  }
+	if (countrySelection.value !== "Everywhere") {
+		matchingProducts = matchingProducts.filter(product =>
+			product.shipsTo.includes(countrySelection.value)
+		);
+	}
 
-  renderProducts(matchingProducts);
+	if (sortBy.value === "cheap") {
+		matchingProducts.sort((a, b) => a.price - b.price);
+	} else if (sortBy.value === "expensive") {
+		matchingProducts.sort((a, b) => b.price - a.price);
+	} else if (sortBy.value === "name") {
+		matchingProducts.sort((a, b) => a.name > b.name);
+	}
+
+	renderProducts(matchingProducts);
 }
+
+function addToCart(product) {
+	const cartUl = document.querySelector(".cart > ul");
+	const cartLi = document.createElement("li");
+	cartLi.innerHTML = `${product.name}, ${product.price}`;
+	cartUl.appendChild(cartLi);
+}
+
