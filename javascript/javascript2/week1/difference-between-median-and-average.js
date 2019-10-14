@@ -18,7 +18,7 @@ function sortAscending(_array) {
 function median(array) {
     const sortedArray = sortAscending([...array]);
     let mid = Math.ceil(sortedArray.length / 2);
-    let median = sortedArray[mid];
+    let median = sortedArray[mid-1];
     return `The median of array [${array}] is: ${median}`;
 };
   
