@@ -1,24 +1,59 @@
 * {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1em;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
 }
 
 div {
-  margin: 10% auto;
+    margin: 10% auto;
 }
 
 button {
-  display: block;
-  margin: 2em auto;
-  padding: 2em;
-  border-style: none;
-  border-radius: 2em;
+    display: block;
+    margin: 2em auto;
+    padding: 2em;
+    border-style: none;
+    border-radius: 4px;
 }
 
+button:hover { background: lightgray; }
+button:focus { outline: none; }
+
 .log-with-delay {
-  background-color: pink;
+    background-color: pink;
 }
 
 .log-location {
-  background-color: palegoldenrod;
+    background-color: palegoldenrod;
+}
+
+.map {
+    width: 100%;
+    height: 150px;
+    border-style: 0;
+}
+
+.map > p {
+    margin: 0 auto;
+    width: 45%;
+}
+
+.pop-up {
+    background-color: palegreen;
+    width: 5%;
+    height: 10%;
+    border-radius: 20px;
+    text-align: center;
+    padding: 1.4em;
+}
+
+.joke {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+    width: 60%;
+}
+
+p.joke {
+    text-align: center;
+    font-size: 2em;
 }
