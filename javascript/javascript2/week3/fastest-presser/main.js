@@ -1,11 +1,11 @@
 const button = document.querySelector("button");
 const input = document.querySelector("input");
 const header = document.querySelector("header");
-const gameOn = document.querySelector("div.input");
+const gameStatus = document.querySelector("div.input");
 let winningPlayer = "";
 
 function initGame() {
-	gameOn.innerHTML = `
+	gameStatus.innerHTML = `
 		<input type="number" id="set-duration" name="quantity" min="1" max="9" placeholder="Set seconds">
 		<button>Start game!</button>
 	`;
@@ -13,13 +13,12 @@ function initGame() {
 
 function gameOver() {
 	// debugger;
-	gameOn.innerHTML = "<h3>Time's up!</h3>";
 	setTimeout(
-		() => (gameOn.innerHTML = "<p>and the winner is...</p>"),
+		() => (gameStatus.innerHTML = "<p>and the winner is...</p>"),
 		1 * 1000
 	);
 	function revealWinner() {
-		gameOn.innerHTML = "<p>and the winner is: <p id='winner'></p></p>";
+		gameStatus.innerHTML = '<p>and the winner is: <p id="winner"></p></p>';
 		winner.classList.add("winner");
 		winner.innerText = winningPlayer;
 	}
@@ -30,6 +29,7 @@ function setGameDuration() {
 	const gameDuration = input.value;
 	console.log(gameDuration);
 	const endGame = () => {
+		gameStatus.innerHTML = "<h3>Time's up!</h3>";
 		let winner = document.querySelector("p#winner");
 		if (player1KeyCount > player2KeyCount) {
 			gameOver();
@@ -43,29 +43,30 @@ function setGameDuration() {
 			winningPlayer = "Player 2";
 			console.log("The winner is: Player 2!");
 		}
-
 		console.log("finish");
 	};
 
 	const startGame = () => {
+		console.log("start");
+		gameStatus.innerHTML =
+			"<h3>Game On!</h3><p>You have <p id='seconds'></p> seconds to press your key!</p>";
 		let secondsLeft = parseInt(gameDuration);
-		console.log("seconds left:", secondsLeft);
 		function updateSeconds() {
 			if (secondsLeft !== 0) {
 				secondsLeft -= 1;
-				updateSeconds();
+				console.log(secondsLeft + ' seconds left');
+				let second = document.getElementById("seconds");
+				second.innerHTML = secondsLeft;
 			} else {
 				endGame;
 			}
 		}
-		const countDown = () => setTimeout(updateSeconds, 1 * 1000);
-		gameOn.innerHTML =
-			"<h3>Game On!</h3><p>You have <p id='seconds'></p> seconds to press your key!</p>";
-		console.log("start");
+
+		const countDown = () => setInterval(updateSeconds, 1 * 1000);
 		countDown();
 		let seconds = document.querySelector("p#seconds");
 		seconds.innerText = secondsLeft;
-		header.appendChild(gameOn);
+		header.appendChild(gameStatus);
 	};
 	if (input.value < 1) {
 		window.alert("Please set the game duration before submitting.");
