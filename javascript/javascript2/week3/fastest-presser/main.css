@@ -33,6 +33,10 @@ p.winner {
     color: red;
 }
 
+p.grayed-out {
+    color: lightgray;
+}
+
 input {
     display: block;
     margin: 1em auto;
@@ -55,3 +59,22 @@ button {
 
 button:hover { background: lightgray; }
 button:focus { outline: none; }
+
+.game {
+    display: flex;
+    width: 75%;
+    height: 15em;
+    border-top: 1px solid gray;
+    margin: 1em auto;
+}
+
+.player1 {
+    width: 50%;
+    border-right: 1px solid gray;
+    padding: 15%;
+}
+
+.player2 {
+    width: 50%;
+    padding: 15%;
+}

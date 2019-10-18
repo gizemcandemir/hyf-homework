@@ -1,7 +1,21 @@
-const button = document.querySelector("button");
-const input = document.querySelector("input");
 const header = document.querySelector("header");
+const input = document.querySelector("input");
+const button = document.querySelector("button");
 const gameStatus = document.querySelector("div.input");
+
+let player1KeyCount = 0;
+let player2KeyCount = 0;
+
+const player1div = document.querySelector("div.player1");
+const player1 = document.createElement("p");
+player1div.appendChild(player1);
+player1.innerText = player1KeyCount;
+
+const player2div = document.querySelector("div.player2");
+const player2 = document.createElement("p");
+player2div.appendChild(player2);
+player2.innerText = player2KeyCount;
+
 let winningPlayer = "";
 
 function initGame() {
@@ -14,7 +28,9 @@ function initGame() {
 function gameOver() {
 	// debugger;
 	setTimeout(
-		() => (gameStatus.innerHTML = "<p>and the winner is...</p>"),
+		() =>
+			(gameStatus.innerHTML =
+				'<p>and the winner is: <p id="winner" class="grayed-out">________</p></p>'),
 		1 * 1000
 	);
 	function revealWinner() {
@@ -25,7 +41,7 @@ function gameOver() {
 	setTimeout(revealWinner, 2 * 1000);
 }
 
-function setGameDuration() {
+function setGame() {
 	const gameDuration = input.value;
 	console.log(gameDuration);
 	const endGame = () => {
@@ -51,17 +67,31 @@ function setGameDuration() {
 		gameStatus.innerHTML =
 			"<h3>Game On!</h3><p>You have <p id='seconds'></p> seconds to press your key!</p>";
 		let secondsLeft = parseInt(gameDuration);
+		function keepCounting() {
+				document.addEventListener("keypress", () => {
+					player1.textContent = event.key;
+					if (event.key === "s") {
+						player1KeyCount += 1;
+						console.log("Player 1: ", player1KeyCount);
+						return player1KeyCount;
+					} else if (event.key === "l") {
+						player2KeyCount += 1;
+						console.log("Player 2: ", player2KeyCount);
+						return player2KeyCount;
+					}
+				});
+		}
 		function updateSeconds() {
 			if (secondsLeft !== 0) {
+				keepCounting();
 				secondsLeft -= 1;
-				console.log(secondsLeft + ' seconds left');
+				console.log(secondsLeft + " seconds left");
 				let second = document.getElementById("seconds");
 				second.innerHTML = secondsLeft;
 			} else {
-				endGame;
+				return endGame;
 			}
 		}
-
 		const countDown = () => setInterval(updateSeconds, 1 * 1000);
 		countDown();
 		let seconds = document.querySelector("p#seconds");
@@ -78,23 +108,4 @@ function setGameDuration() {
 	setTimeout(endGame, gameDuration * 1000);
 }
 
-button.addEventListener("click", setGameDuration);
-
-const player1 = document.createElement("p");
-const player2 = document.createElement("p");
-let player1KeyCount = 0;
-let player2KeyCount = 0;
-player1.innerText = player1KeyCount;
-player2.innerText = player2KeyCount;
-
-const game = document.addEventListener("keypress", function() {
-	const oldText = player1.textContent;
-	player1.textContent = oldText + event.key;
-	if (event.key === "s") {
-		player1KeyCount += 1;
-		console.log("Player 1: ", player1KeyCount);
-	} else if (event.key === "l") {
-		player2KeyCount += 1;
-		console.log("Player 2: ", player2KeyCount);
-	}
-});
+button.addEventListener("click", setGame);
