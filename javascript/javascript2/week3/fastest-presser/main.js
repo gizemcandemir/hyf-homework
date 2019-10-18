@@ -16,7 +16,7 @@ let winningPlayer;
 let winnerCanvas;
 
 function resetState() {
-	isGameOver = false;
+	gameDuration = 0;
 
 	player1KeyCount = 0;
 	player2KeyCount = 0;
@@ -31,7 +31,6 @@ function resetState() {
 }
 
 function gameOver() {
-	debugger;
 	setTimeout(() => {
 		gameStatus.innerHTML =
 			'<h3></h3><p>and the winner is: <p id="winner" class="grayed-out">________</p></p>';
@@ -46,41 +45,48 @@ function gameOver() {
 
 function endGame() {
 	gameStatus.innerHTML = "<h3>Time's up!</h3>";
-	let winner = document.querySelector("p#winner");
-	if (player1KeyCount === player2KeyCount) {
-		window.alert("That's a tie! Let's start over again");
-		resetState();
-	} else {
-		if (player1KeyCount > player2KeyCount) {
-			winningPlayer = "Player 1";
-			winnerDiv = document.querySelector("#player1");
-			winnerCanvas = document.createElement("canvas");
-			winnerCanvas.setAttribute("id", "confetti");
-			winnerDiv.appendChild(winnerCanvas);
+	setTimeout(function(){
+		if (player1KeyCount === player2KeyCount) {
+			window.alert("That's a tie! Let's start over again");
+			resetState();
+			// initGame();
 		} else {
-			winningPlayer = "Player 2";
-			winnerDiv = document.querySelector("#player2");
-			winnerCanvas = document.createElement("canvas");
-			winnerCanvas.setAttribute("id", "confetti");
-			winnerDiv.appendChild(winnerCanvas);
+			let winner = document.querySelector("p#winner");
+			if (player1KeyCount > player2KeyCount) {
+				winningPlayer = "Player 1";
+				winnerDiv = document.querySelector("#player1");
+				winnerCanvas = document.createElement("canvas");
+				winnerCanvas.setAttribute("id", "confetti");
+				winnerDiv.appendChild(winnerCanvas);
+			} else {
+				winningPlayer = "Player 2";
+				winnerDiv = document.querySelector("#player2");
+				winnerCanvas = document.createElement("canvas");
+				winnerCanvas.setAttribute("id", "confetti");
+				winnerDiv.appendChild(winnerCanvas);
+			}
+			gameOver();
+			const confettiSettings = { target: "confetti" };
+			const confetti = new ConfettiGenerator(confettiSettings);
+			confetti.render();
 		}
-		gameOver();
-		const confettiSettings = { target: "confetti" };
-		const confetti = new ConfettiGenerator(confettiSettings);
-		confetti.render();
-	}
+	},10);
 }
 
 function startGame() {
 	resetState();
 
-	const countDown = setInterval(updateSeconds, 1000);
+	isGameOver = false;
 
 	gameStatus.innerHTML =
 		"<h3>Game On!</h3><p>You have <p id='seconds'></p> seconds to press your key!</p>";
 	header.appendChild(gameStatus);
 
+	gameDuration = input.value;
 	let secondsLeft = gameDuration;
+
+	document.getElementById("seconds").innerHTML = secondsLeft;
+	const countDown = setInterval(checkTime, 1000);
 
 	document.addEventListener("keypress", () => {
 		if (!isGameOver) {
@@ -92,14 +98,13 @@ function startGame() {
 		}
 	});
 
-	function updateSeconds() {
+	function checkTime() {
+		secondsLeft--;
 		document.getElementById("seconds").innerHTML = secondsLeft;
-		if (secondsLeft > 0) {
-			secondsLeft--;
-		} else {
+		if (secondsLeft === 0) {
 			isGameOver = true;
 			clearInterval(countDown);
-			endGame();
+			setTimeout(() => endGame(), 1000);
 		}
 	}
 
@@ -108,7 +113,6 @@ function startGame() {
 }
 
 function initGame() {
-	gameDuration = input.value;
 	if (input.value < 1) {
 		window.alert("Please set the game duration.");
 	} else {

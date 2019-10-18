@@ -70,13 +70,14 @@ button:focus { outline: none; }
 }
 
 #player1, #player2 {
+    font-family: 'Press Start 2P', cursive;
     position: relative;
     width: 50%;
-    padding: 15%;
+    padding-top: 15%;
 }
 
 #border {
-    width: 3px;
+    width: 2px;
     background-color: gray;
 }
 
