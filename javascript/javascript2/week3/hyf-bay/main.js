@@ -114,8 +114,6 @@ function addToCart(product) {
 
 const productPrices = matchingProducts.map(product => product.price);
 
-console.log(productPrices);
-
 function callback(boolean) {
 	if (sendPricesToServer) {
 		console.log("true");
