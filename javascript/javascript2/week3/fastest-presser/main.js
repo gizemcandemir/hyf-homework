@@ -9,10 +9,11 @@ let isGameOver;
 let player1KeyCount;
 let player2KeyCount;
 
-const player1Count = document.querySelector("div.player1 p.count");
-const player2Count = document.querySelector("div.player2 p.count");
+const player1Count = document.querySelector("div#player1 p.count");
+const player2Count = document.querySelector("div#player2 p.count");
 
 let winningPlayer;
+let winnerCanvas;
 
 function resetState() {
 	isGameOver = false;
@@ -50,10 +51,21 @@ function endGame() {
 	} else {
 		if (player1KeyCount > player2KeyCount) {
 			winningPlayer = "Player 1";
+			winnerDiv = document.querySelector("#player1");
+			winnerCanvas = document.createElement("canvas");
+			winnerCanvas.setAttribute("id", "confetti");
+			winnerDiv.appendChild(winnerCanvas);
 		} else {
 			winningPlayer = "Player 2";
+			winnerDiv = document.querySelector("#player2");
+			winnerCanvas = document.createElement("canvas");
+			winnerCanvas.setAttribute("id", "confetti");
+			winnerDiv.appendChild(winnerCanvas);
 		}
 		gameOver();
+		const confettiSettings = { target: "confetti" };
+		const confetti = new ConfettiGenerator(confettiSettings);
+		confetti.render();
 	}
 }
 
