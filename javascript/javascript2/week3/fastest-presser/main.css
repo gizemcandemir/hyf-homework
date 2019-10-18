@@ -2,9 +2,9 @@
     font-family: 'Roboto', sans-serif;
 }
 
-header { 
-    padding: 3em; 
-    text-align: center;    
+header {
+    padding: 3em;
+    text-align: center;
 }
 
 div {
@@ -60,7 +60,7 @@ button {
 button:hover { background: lightgray; }
 button:focus { outline: none; }
 
-.game {
+.scoreboard {
     display: flex;
     width: 75%;
     height: 15em;
