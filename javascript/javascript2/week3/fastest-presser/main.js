@@ -31,12 +31,14 @@ function resetState() {
 }
 
 function gameOver() {
+	debugger;
 	setTimeout(() => {
 		gameStatus.innerHTML =
-			'<p>and the winner is: <p id="winner" class="grayed-out">________</p></p>';
+			'<h3></h3><p>and the winner is: <p id="winner" class="grayed-out">________</p></p>';
 	}, 1000);
 	setTimeout(() => {
-		gameStatus.innerHTML = '<p>and the winner is: <p id="winner"></p></p>';
+		gameStatus.innerHTML =
+			'<h3></h3><p>and the winner is: <p id="winner"></p></p>';
 		winner.classList.add("winner");
 		winner.innerText = winningPlayer;
 	}, 2000);
@@ -46,8 +48,8 @@ function endGame() {
 	gameStatus.innerHTML = "<h3>Time's up!</h3>";
 	let winner = document.querySelector("p#winner");
 	if (player1KeyCount === player2KeyCount) {
-		window.alert("That's a tie! Do you wanna try again?");
-		initGame();
+		window.alert("That's a tie! Let's start over again");
+		resetState();
 	} else {
 		if (player1KeyCount > player2KeyCount) {
 			winningPlayer = "Player 1";
