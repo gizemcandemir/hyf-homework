@@ -1,33 +1,43 @@
 const header = document.querySelector("header");
-const input = document.querySelector("input");
-const button = document.querySelector("button");
-
 const gameStatus = document.querySelector("div.status");
-let gameDuration = 0;
-let isGameOver;
-
-let player1KeyCount;
-let player2KeyCount;
-
 const player1Count = document.querySelector("div#player1 p.count");
 const player2Count = document.querySelector("div#player2 p.count");
 
-let winningPlayer;
 let winnerCanvas;
 
-function resetState() {
+function prepareForm() {
+	gameStatus.innerHTML = `
+	<input type="number" id="set-duration" name="quantity" min="1" max="9" placeholder="Set seconds">
+	<button>Start game!</button>
+	`;
+	input = document.querySelector("input");
+	button = document.querySelector("button");
+	button.addEventListener("click", startGame);
+}
+
+function initGame() {
+	resetGameState();
+	prepareForm();
+
+	document.addEventListener("keyup", () => {
+		if (!isGameOver) {
+			if (event.key === "s") {
+				player1Count.innerText = ++player1KeyCount;
+			} else if (event.key === "l") {
+				player2Count.innerText = ++player2KeyCount;
+			}
+		}
+	});
+}
+
+function resetGameState() {
+	isGameOver = false;
 	gameDuration = 0;
 
 	player1KeyCount = 0;
 	player2KeyCount = 0;
-
-	player1Count.innerText = player1KeyCount;
-	player2Count.innerText = player2KeyCount;
-
-	gameStatus.innerHTML = `
-		<input type="number" id="set-duration" name="quantity" min="1" max="9" placeholder="Set seconds">
-		<button>Start game!</button>
-	`;
+	
+	winningPlayer = "";
 }
 
 function gameOver() {
@@ -45,60 +55,45 @@ function gameOver() {
 
 function endGame() {
 	gameStatus.innerHTML = "<h3>Time's up!</h3>";
-	setTimeout(function(){
+	setTimeout(function() {
 		if (player1KeyCount === player2KeyCount) {
 			window.alert("That's a tie! Let's start over again");
-			resetState();
-			// initGame();
+			prepareForm();
 		} else {
 			let winner = document.querySelector("p#winner");
 			if (player1KeyCount > player2KeyCount) {
 				winningPlayer = "Player 1";
-				winnerDiv = document.querySelector("#player1");
-				winnerCanvas = document.createElement("canvas");
-				winnerCanvas.setAttribute("id", "confetti");
-				winnerDiv.appendChild(winnerCanvas);
+				confettiSettings = { target: "confetti-1" };
 			} else {
 				winningPlayer = "Player 2";
-				winnerDiv = document.querySelector("#player2");
-				winnerCanvas = document.createElement("canvas");
-				winnerCanvas.setAttribute("id", "confetti");
-				winnerDiv.appendChild(winnerCanvas);
+				confettiSettings = { target: "confetti-2" };
 			}
 			gameOver();
-			const confettiSettings = { target: "confetti" };
 			const confetti = new ConfettiGenerator(confettiSettings);
 			confetti.render();
 		}
-	},10);
+	}, 10);
 }
 
 function startGame() {
-	resetState();
-
-	isGameOver = false;
+	resetGameState();
+	
+	if (input.value < 1) {
+		window.alert("Please set the game duration.");
+		return;
+	} else {
+		gameDuration = input.value;
+	}
 
 	gameStatus.innerHTML =
 		"<h3>Game On!</h3><p>You have <p id='seconds'></p> seconds to press your key!</p>";
 	header.appendChild(gameStatus);
 
-	gameDuration = input.value;
 	let secondsLeft = gameDuration;
 
 	document.getElementById("seconds").innerHTML = secondsLeft;
-	const countDown = setInterval(checkTime, 1000);
 
-	document.addEventListener("keypress", () => {
-		if (!isGameOver) {
-			if (event.key === "s") {
-				player1Count.textContent = ++player1KeyCount;
-			} else if (event.key === "l") {
-				player2Count.textContent = ++player2KeyCount;
-			}
-		}
-	});
-
-	function checkTime() {
+	const countDown = setInterval(function() {
 		secondsLeft--;
 		document.getElementById("seconds").innerHTML = secondsLeft;
 		if (secondsLeft === 0) {
@@ -106,18 +101,10 @@ function startGame() {
 			clearInterval(countDown);
 			setTimeout(() => endGame(), 1000);
 		}
-	}
+	}, 1000);
 
 	let secondsP = document.querySelector("p#seconds");
 	secondsP.innerText = secondsLeft;
 }
 
-function initGame() {
-	if (input.value < 1) {
-		window.alert("Please set the game duration.");
-	} else {
-		startGame();
-	}
-}
-
-button.addEventListener("click", initGame);
+initGame();
