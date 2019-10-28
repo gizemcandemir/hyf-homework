@@ -5,5 +5,4 @@ fetch(url)
 	.then(value => value.json())
 	.then(movies => {
 		const badMovies = movies.filter(movie => movie.rating < 4);
-		console.log(badMovies);
 	});
