@@ -92,6 +92,8 @@ h2 {
 p {
 	padding: 5px;
 }
+
+/* Background color is set according to the temperature */
 .burning {
 	background-color: #ffa786;
 }
@@ -116,12 +118,17 @@ p {
 	background-color: #e1cce1;
 }
 
+/* Google Maps */
 #map {
 	height: 100%;
 	width: 40%;
 }
 
+/* Spinner */
 .show-loader {
+	position: absolute;
+	top: 30%;
+	left: 40%;
 	border: 16px solid #f3f3f3; /* Light grey */
 	border-top: 16px solid #3498db; /* Blue */
 	border-radius: 50%;

@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<title>Giphy App</title>
+		<link href="https://fonts.googleapis.com/css?family=Pacifico&amp;display=swap" rel="stylesheet">
 		<link
 			href="https://fonts.googleapis.com/css?family=Open+Sans|Rubik&display=swap"
 			rel="stylesheet"
@@ -13,7 +14,7 @@
 	</head>
 	<body>
 		<header>
-			<h1>Giphy App</h1>
+			<h1>Giphy Searcher</h1>
 			<div class="search">
 				<input
 					type="text"
@@ -25,14 +26,12 @@
 					type="text"
 					id="limit"
 					name="limit"
-					placeholder="Default is 5"
+					placeholder="Default is 15"
 				/>
 				<button>Search</button>
 			</div>
 		</header>
-		<hr />
-		<div id="loader"></div>
-		<div class="display"></div>
+		<div class="display"><div id="loader"></div></div>
 		<script src="./main.js"></script>
 	</body>
 </html>

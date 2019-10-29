@@ -26,7 +26,7 @@ function fetchJSON(url) {
 }
 
 function renderSearchResults() {
-	loader.classList.add("show-loader"); // ask this!
+	loader.classList.add("show-loader");
 	searchQuery =
 		BASE_URL + "weather?q=" + input.value + "&" + APP_ID + "&units=metric";
 	fetchJSON(searchQuery).then(data => {
@@ -43,8 +43,7 @@ const renderWeatherDetails = data => {
 	let temp = Math.round(data.main.temp);
 	renderTempBasedUI(temp);
 
-	// console.log(data.name.toLowerCase());
-	// console.log(cityList);
+	/* I tried something but it didn't work, so I just keep it here for future tries. */
 
 	// cityList.forEach(function(object) {
 	// 	if (object.name === data.name) {
@@ -69,8 +68,6 @@ const renderWeatherDetails = data => {
     <p id="how-cloudy">Cloudiness: ${data.clouds.all}%</p>
     <p id="sunrise"><img src="images/sunrise.svg" alt="sunrise"> Sunrise: ${sunrise}</p>
 		<p id="sunrise"><img src="images/sunset.svg" alt="sunset"> Sunset: ${sunset}</p>`;
-
-			
 };
 
 function renderSearchByCoordinates(lat, lon) {
@@ -90,7 +87,7 @@ function renderSearchByCoordinates(lat, lon) {
 }
 
 function renderTempBasedUI(temp) {
-	loader.classList.add("hide-loader"); // ask this!
+	loader.classList.add("hide-loader");
 	body.classList.remove("burning", "hot", "mild", "chill", "cold", "freezing");
 
 	if (temp > 35) {
