@@ -12,4 +12,4 @@ function getEventWeekday(num) {
   }
 }
 
-return getEventWeekday(3);
+return getEventWeekday(24);

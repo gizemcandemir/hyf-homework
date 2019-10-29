@@ -36,7 +36,7 @@ function resetGameState() {
 
 	player1KeyCount = 0;
 	player2KeyCount = 0;
-	
+
 	winningPlayer = "";
 }
 
@@ -77,7 +77,7 @@ function endGame() {
 
 function startGame() {
 	resetGameState();
-	
+
 	if (input.value < 1) {
 		window.alert("Please set the game duration.");
 		return;

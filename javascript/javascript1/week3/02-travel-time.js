@@ -9,13 +9,27 @@ const travelInformation = {
 //   destinationDistance: 432,
 // };
 
- function calculateTravelTime(travelInformationObject) {
+//  function calculateTravelTime(travelInformationObject) {
+//   const kmH = travelInformationObject.speed;
+//   const distance = travelInformationObject.destinationDistance;
+//   const hours = Math.floor(distance/kmH%60);
+//   const minutes = Math.round(distance%kmH*60/kmH);
+//   return `${hours} hours and ${minutes} minutes`
+// }
+
+
+function calculateTravelTime(travelInformationObject) {
   const kmH = travelInformationObject.speed;
   const distance = travelInformationObject.destinationDistance;
-  const hours = Math.floor(distance/kmH%60);
-  const minutes = Math.round(432%kmH*60/kmH);
+  const division = distance/kmH;
+  const hours = Math.floor(division);
+  const minutes = Math.round(60*(division%1));
   return `${hours} hours and ${minutes} minutes`
 }
+
+// const division   = distance/kmH;
+// const hours      = Math.floor(division);
+// const minutes    = Math.round(60*(division%1));
 
 const travelTime = calculateTravelTime(travelInformation);
 // const travelTime2 = calculateTravelTime(travelInformation2);

@@ -1,4 +1,4 @@
-const seriesDurations = [
+const favSeriesDurations = [
   {
     title: 'Game of Thrones',
     days: 3,
@@ -19,23 +19,23 @@ const seriesDurations = [
   }
 ]
 
-const avgLifeSpanInMin = 80*365*24*60;
-// console.log(avgLifeSpanInMin);
-
-let totalDays = 0;
-let totalHours = 0;
-let totalMinutesOfSeries = 0;
-let grandTotalInMinutes = 0;
-let totalTimeSpent = 0;
-
-for (let i=0; i<seriesDurations.length; i++) { 
-  totalMinutesPerSeries = seriesDurations[i].days*24*60 + seriesDurations[i].hours*60 + seriesDurations[i].minutes;
-  grandTotalInMinutes += totalMinutesPerSeries;
-  const percentageInLife = totalMinutesPerSeries*100/avgLifeSpanInMin;
+function percantageTimeSpentOnSeriesToLife (seriesDurations) {
+  const avgLifeSpanInMin = 80 * 365 * 24 * 60; // 80 years in minutes
+  let totalTimeSpentOnSeries = 0;
   
-  console.log(`${seriesDurations[i].title} took ${percentageInLife.toFixed(3)} of my life`);
+  seriesDurations.forEach(function(seriesDuration) {
+    const totalMinutesPerSeries = seriesDuration.days * 24 * 60 + seriesDuration.hours * 60 + seriesDuration.minutes;
+    
+    totalTimeSpentOnSeries += totalMinutesPerSeries;
+    
+    const percTimeSpentOnSeriesToLife = totalTimeSpentOnSeries * 100 / avgLifeSpanInMin;
+    console.log(`${seriesDuration.title} took ${percTimeSpentOnSeriesToLife.toFixed(3)} of my life`);
+  });
 
-  totalTimeSpent = grandTotalInMinutes*100/avgLifeSpanInMin;
+  
+  let percTotalTimeSpentOnSeriesToLife = totalTimeSpentOnSeries * 100 / avgLifeSpanInMin;
+  
+  return `\nIn total that is ${percTotalTimeSpentOnSeriesToLife.toFixed(2)}% of my life`;
 }
 
-console.log(`\nIn total that is ${totalTimeSpent.toFixed(2)}% of my life`);
+console.log(percantageTimeSpentOnSeriesToLife (favSeriesDurations));

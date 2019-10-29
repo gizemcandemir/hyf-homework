@@ -16,13 +16,7 @@ function minusOne(a) {
 	return a - 1;
 }
 
-function run(a) {
-	return a;
-}
-
-console.log(run (plusOne));
-
-console.log(plusOne);
+console.log(plusOne(3));
 
 console.log(minusOne(3));
 
