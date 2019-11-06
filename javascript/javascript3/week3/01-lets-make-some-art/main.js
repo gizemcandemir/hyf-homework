@@ -1,3 +1,8 @@
+let randomX = 0;
+let randomY = 0;
+let randomRadius = 0;
+let randomColor = "";
+
 class Circle {
 	constructor(x, y, r, startAngle, endAngle, fillColor) {
 		this.x = x;
@@ -31,19 +36,21 @@ function randomIntFromInterval(min, max) {
 	return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-const randomX = randomIntFromInterval(0, window.innerWidth);
-const randomY = randomIntFromInterval(0, window.innerHeight);
-const randomRadius = randomIntFromInterval(0, 150);
-const randomColor =
-	"#" + ("00000" + ((Math.random() * (1 << 24)) | 0).toString(16)).slice(-6);
+function makeArt() {
+	randomX = randomIntFromInterval(0, window.innerWidth);
+	randomY = randomIntFromInterval(0, window.innerHeight);
+	randomRadius = randomIntFromInterval(0, 150);
+	randomColor =
+		"#" + ("00000" + ((Math.random() * (1 << 24)) | 0).toString(16)).slice(-6);
+	const c1 = new Circle(
+		randomX,
+		randomY,
+		randomRadius,
+		0,
+		2 * Math.PI,
+		randomColor
+	);
+	c1.draw();
+}
 
-const c1 = new Circle(
-	randomX,
-	randomY,
-	randomRadius,
-	0,
-	2 * Math.PI,
-	randomColor
-);
-
-c1.draw();
+setInterval(makeArt, 500);
