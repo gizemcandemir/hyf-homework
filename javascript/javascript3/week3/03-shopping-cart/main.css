@@ -1,0 +1,22 @@
+body {
+	font-family: 'Courier New', Courier, monospace;
+	margin: 2em;
+	padding: 0;
+}
+
+ul {
+	list-style: none;
+	font-weight: 600;
+}
+
+li {
+	font-weight: normal;
+	padding-bottom: 0.5em;
+	list-style: none;
+}
+
+.error {
+	color: red;
+	display: block;
+	padding-top: 0.5em;
+}
