@@ -1,4 +1,7 @@
 -- ## School database
+-- Create a new database containing the following tables:
+-- Class: with the columns: id, name, begins (date), ends (date)
+-- Student: with the columns: id, name, email, phone, class_id (foreign key)
 CREATE DATABASE school;
 USE school;
 
@@ -19,3 +22,11 @@ CREATE TABLE `student` (
   PRIMARY KEY (`id`),
   FOREIGN KEY (`class_id`) REFERENCES `class` (`id`)
 );
+
+-- Create an index on the name column of the student table.
+CREATE INDEX `student_name` 
+ON `student` (name);
+
+-- Add a new column to the class table named status which can only have the following values: not-started, ongoing, finished (hint: enumerations).
+ALTER TABLE class
+ADD status ENUM('not-started', 'ongoing', 'finished') NOT NULL;
