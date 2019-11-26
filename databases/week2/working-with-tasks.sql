@@ -3,14 +3,14 @@ USE hyf_db_lesson1;
 
 -- Add a task with the these attributes: title, description, created, updated, dueDate, statusID, userID
 INSERT INTO task (
-	title,
+    title,
     description,
     created,
     updated,
     due_date,
     status_id,
     user_id
-	) VALUES (
+) VALUES (
     'Sing a song when you wake up',
     'get energized in the morning',
     DATE(NOW()),
