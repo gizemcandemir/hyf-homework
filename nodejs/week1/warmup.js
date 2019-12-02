@@ -1,4 +1,3 @@
-console.log("hello world");
 const pi = 3.14; 
 
 class Circle {
