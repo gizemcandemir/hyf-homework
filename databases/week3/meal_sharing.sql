@@ -421,7 +421,8 @@ WHERE price < 100;
 
 -- Get meals that still has available reservations
 SELECT * FROM meal
-WHERE `when` > "2019-11-27";
+JOIN reservation ON meal.id = reservation.meal_id
+WHERE max_reservations > reservation.number_of_guests;
 
 -- Get meals that partially match a title. 
 -- Rød grød med will match the meal with the title Rød grød med fløde
