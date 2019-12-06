@@ -7,6 +7,14 @@ const meals = JSON.parse(fs.readFileSync(__dirname + "/data/meals.json"));
 const reviews = JSON.parse(fs.readFileSync(__dirname + "/data/reviews.json"));
 const reservations = JSON.parse(fs.readFileSync(__dirname + "/data/reservations.json"));
 
+app.use(function (req, res, next) {
+  console.log('Time:', Date.now());
+  next();
+}, function (req, res, next) {
+  console.log('Request Type:', req.method);
+  next();
+});
+
 app.get("/", (req, res) => {
 	res.send("hello world!");
 });
