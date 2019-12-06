@@ -1,11 +1,5 @@
 const express = require("express");
-const fs = require("fs");
-
 const app = express();
-
-const meals = JSON.parse(fs.readFileSync(__dirname + "/data/meals.json"));
-const reviews = JSON.parse(fs.readFileSync(__dirname + "/data/reviews.json"));
-const reservations = JSON.parse(fs.readFileSync(__dirname + "/data/reservations.json"));
 
 app.use(function (req, res, next) {
   console.log('Time:', Date.now());
@@ -19,70 +13,22 @@ app.get("/", (req, res) => {
 	res.send("hello world!");
 });
 
-app.get("/meals", (req, res) => {
-	meals.map(meal => {
-    meal.reviews = [];
-    for (let i = 0; i < reviews.length; i++) {
-      if (reviews[i].mealId === meal.id) {
-        meal.reviews.push(reviews[i]);
-      }
-    }
-  });
-  res.json(meals);
-});
+const mealsRouter = require('./routes/meals.js');
+app.get('/meals', mealsRouter);
 
-app.get("/cheap-meals", (req, res) => {
-	const cheapMeals = 
-  meals.filter(meal => meal.price < 80);
-  cheapMeals.map(meal => {
-    meal.reviews = [];
-    for (let i = 0; i < reviews.length; i++) {
-      if (reviews[i].mealId === meal.id) {
-        meal.reviews.push(reviews[i]);
-      }
-    }
-  });
-  res.json(cheapMeals);
-});
+const cheapMealsRouter = require('./routes/cheap-meals.js');
+app.get('/cheap-meals', cheapMealsRouter);
 
-app.get("/large-meals", (req, res) => {
-	const largeMeals = 
-  meals.filter(meal => meal.maxNumberOfGuests > 4);
-  largeMeals.map(meal => {
-    meal.reviews = [];
-    for (let i = 0; i < reviews.length; i++) {
-      if (reviews[i].mealId === meal.id) {
-        meal.reviews.push(reviews[i]);
-      }
-    }
-  });
-  res.json(largeMeals);
-});
+const largeMealsRouter = require('./routes/large-meals.js');
+app.get('/large-meals', largeMealsRouter);
 
-app.get("/meal", (req, res) => {
-  let random = Math.ceil(Math.random() * (meals.length))
-  const randomMeal = 
-  meals.filter(meal => meal.id === random);
-  randomMeal.map(meal => {
-    meal.reviews = [];
-    for (let i = 0; i < reviews.length; i++) {
-      if (reviews[i].mealId === meal.id) {
-        meal.reviews.push(reviews[i]);
-      }
-    }
-  });
-  res.json(randomMeal);
-});
+const randomMealRouter = require('./routes/meal.js');
+app.get('/meal', randomMealRouter);
 
-app.get("/reservations", (req, res) => {
-  res.json(reservations);
-});
+const reservationsRouter = require('./routes/reservations.js');
+app.get('/reservations', reservationsRouter);
 
-app.get("/reservation", (req, res) => {
-  let random = Math.ceil(Math.random() * (meals.length))
-  const randomReservation = 
-  reservations.filter(reservation => reservation.id === random);
-  res.json(randomReservation);
-});
+const randomReservationRouter = require('./routes/reservation.js');
+app.get('/reservation', randomReservationRouter);
 
 app.listen(3000, () => console.log("Server started!"));
