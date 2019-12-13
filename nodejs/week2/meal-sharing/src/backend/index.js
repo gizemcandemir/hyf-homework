@@ -16,6 +16,7 @@ app.get("/", (req, res) => {
 const mealsRouter = require('./routes/meals.js');
 app.get('/meals', mealsRouter);
 app.get('/meals/:id', mealsRouter);
+app.get('/api/meals/?', mealsRouter);
 
 const cheapMealsRouter = require('./routes/cheap-meals.js');
 app.get('/cheap-meals', cheapMealsRouter);
