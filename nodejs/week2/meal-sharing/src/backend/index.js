@@ -15,6 +15,7 @@ app.get("/", (req, res) => {
 
 const mealsRouter = require('./routes/meals.js');
 app.get('/meals', mealsRouter);
+app.get('/meals/:id', mealsRouter);
 
 const cheapMealsRouter = require('./routes/cheap-meals.js');
 app.get('/cheap-meals', cheapMealsRouter);
@@ -27,8 +28,13 @@ app.get('/meal', randomMealRouter);
 
 const reservationsRouter = require('./routes/reservations.js');
 app.get('/reservations', reservationsRouter);
+app.get('/reservations/:id', reservationsRouter);
 
 const randomReservationRouter = require('./routes/reservation.js');
 app.get('/reservation', randomReservationRouter);
+
+const reviewsRouter = require('./routes/reviews.js');
+app.get('/reviews', reviewsRouter);
+app.get('/reviews/:id', reviewsRouter);
 
 app.listen(3000, () => console.log("Server started!"));

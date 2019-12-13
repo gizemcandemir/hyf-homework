@@ -17,4 +17,12 @@ app.get("/meals", (req, res) => {
   res.json(meals);
 });
 
+app.get('/meals/:id', (req, res) => {
+  const { id } = req.params;
+  const meal = meals.filter(meal => {
+    return meal.id === parseInt(id)
+  });
+  res.send(meal);
+});
+
 module.exports = app;
