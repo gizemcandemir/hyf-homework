@@ -10,11 +10,11 @@ app.get("/cheap-meals", (req, res) => {
   meals.filter(meal => meal.price < 80);
   cheapMeals.map(meal => {
     meal.reviews = [];
-    for (let i = 0; i < reviews.length; i++) {
-      if (reviews[i].mealId === meal.id) {
-        meal.reviews.push(reviews[i]);
+    reviews.forEach(review => {
+      if (review.mealId === meal.id) {
+        meal.reviews.push(review);
       }
-    }
+    });
   });
   res.json(cheapMeals);
 });

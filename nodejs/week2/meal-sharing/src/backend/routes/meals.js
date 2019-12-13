@@ -8,11 +8,11 @@ const reviews = JSON.parse(fs.readFileSync(__dirname + "/../data/reviews.json"))
 app.get("/meals", (req, res) => {
 	meals.map(meal => {
     meal.reviews = [];
-    for (let i = 0; i < reviews.length; i++) {
-      if (reviews[i].mealId === meal.id) {
-        meal.reviews.push(reviews[i]);
+    reviews.forEach(review => {
+      if (review.mealId === meal.id) {
+        meal.reviews.push(review);
       }
-    }
+    });
   });
   res.json(meals);
 });
