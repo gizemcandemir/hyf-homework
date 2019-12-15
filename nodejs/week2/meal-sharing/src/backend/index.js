@@ -2,10 +2,8 @@ const express = require("express");
 const app = express();
 
 app.use(function (req, res, next) {
-  console.log('Time:', Date.now());
-  next();
-}, function (req, res, next) {
-  console.log('Request Type:', req.method);
+  const d = new Date();
+  console.log(`${d.toISOString().slice(0, 10)} ${d.toISOString().slice(11, 16)} request received for path: ${req.path}`);
   next();
 });
 
