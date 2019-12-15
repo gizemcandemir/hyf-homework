@@ -24,23 +24,34 @@ app.get("/meals/:id", (req, res) => {
 	const meal = meals.filter(meal => {
 		return meal.id === parseInt(id);
 	});
-	res.send(meal);
+	if (meal.length > 0) {
+		res.send(meal);
+	} else if (!isNaN(id)) {
+		res.status(404);
+		res.send(`Error:
+Status Code: ${res.statusCode}
+No meal found with id:${id}`);
+	} else if (isNaN(id)) {
+		res.status(400);
+		res.send(`Error:
+Status Code: ${res.statusCode}
+'id' is supposed to be a number`);
+	}
 });
 
 // Get meals that has a price smaller than maxPrice
 // example: /meals?maxPrice=90
-// app.get("/api/meals?", (req,res)=> {
-//   const { maxPrice } = req.query;
-//   const mealsLowerThanMaxPrice = meals.filter(meal => {
-//    if (meal.price <= maxPrice) {
-//      return meal;
-//    };
-//   });
-//   res.send(mealsLowerThanMaxPrice);
-// });
+app.get("/api/meals?", (req,res)=> {
+  const { maxPrice } = req.query;
+  const mealsLowerThanMaxPrice = meals.filter(meal => {
+   if (meal.price <= maxPrice) {
+     return meal;
+   };
+  });
+  res.send(mealsLowerThanMaxPrice);
+});
 
-// Get meals that partially match a title.
-// example: api/meals?title="Italian"
+
 // app.get("/api/meals?", (req,res)=> {
 //   const { title } = req.query;
 //   const mealsIncludingTitleQuery = meals.filter(meal => {
@@ -63,10 +74,10 @@ app.get("/meals/:id", (req, res) => {
 
 // Only specific number of meals
 // example: api/meals?limit=2
-app.get("/api/meals?", (req, res) => {
-  const { limit } = req.query;
-  const limitedMeals = meals.slice(0, parseInt(limit));
-  res.send(limitedMeals);
-});
+// app.get("/api/meals?", (req, res) => {
+//   const { limit } = req.query;
+//   const limitedMeals = meals.slice(0, parseInt(limit));
+//   res.send(limitedMeals);
+// });
 
 module.exports = app;
