@@ -40,8 +40,8 @@ Status Code: ${res.statusCode}
 });
 
 // Get meals that has a price smaller than maxPrice
-// example: /meals?maxPrice=90
-app.get("/api/meals?", (req,res)=> {
+// try with: /api/meals?maxPrice=90
+app.get("/api/meals", (req,res)=> {
   const { maxPrice } = req.query;
   const mealsLowerThanMaxPrice = meals.filter(meal => {
    if (meal.price <= maxPrice) {
@@ -51,33 +51,35 @@ app.get("/api/meals?", (req,res)=> {
   res.send(mealsLowerThanMaxPrice);
 });
 
-
-// app.get("/api/meals?", (req,res)=> {
-//   const { title } = req.query;
-//   const mealsIncludingTitleQuery = meals.filter(meal => {
-//     return meal.title.toLowerCase().includes(title.toLowerCase());
-//   });
-//   res.send(mealsIncludingTitleQuery);
-// });
+// Get meals that partially match a title.
+// try with: api/meals-title?title=turkish
+app.get("/api/meals-title", (req,res)=> {
+	const { title } = req.query;
+	console.log(title);
+  const mealsIncludingTitleQuery = meals.filter(meal => {
+    return meal.title.toLowerCase().includes(title.toLowerCase());
+  });
+  res.send(mealsIncludingTitleQuery);
+});
 
 // Get meals that has been created after the date
-// example: api/meals?createdAfter=2019-12-07
-// app.get("/api/meals?", (req, res) => {
-//   const { createdAfter } = req.query;
-// 	const mealsCreatedAfterQuery = meals.filter(meal => {
-// 		if (new Date(meal.createdAt) > new Date (createdAfter)) {
-//       return meal;
-// 		}
-// 	});
-// 	res.send(mealsCreatedAfterQuery);
-// });
+// try with: api/meals-createdAfter?createdAfter=2019-12-07
+app.get("/api/meals-createdAfter", (req, res) => {
+  const { createdAfter } = req.query;
+	const mealsCreatedAfterQuery = meals.filter(meal => {
+		if (new Date(meal.createdAt) > new Date (createdAfter)) {
+      return meal;
+		}
+	});
+	res.send(mealsCreatedAfterQuery);
+});
 
 // Only specific number of meals
-// example: api/meals?limit=2
-// app.get("/api/meals?", (req, res) => {
-//   const { limit } = req.query;
-//   const limitedMeals = meals.slice(0, parseInt(limit));
-//   res.send(limitedMeals);
-// });
+// example: api/meals-limit?limit=2
+app.get("/api/meals-limit", (req, res) => {
+  const { limit } = req.query;
+  const limitedMeals = meals.slice(0, parseInt(limit));
+  res.send(limitedMeals);
+});
 
 module.exports = app;
