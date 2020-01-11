@@ -76,13 +76,11 @@ router.put("/:id", (req, res) => {
 
 // GET api/meals/ query parameters
 router.get("/", (req, res) => {
-	console.log(req.query);
 	const { maxPrice } = req.query;
 	const { availableReservations } = req.query;
 	const { title } = req.query;
 	const { createdAfter } = req.query;
 	const { limit } = req.query;
-	//Get meals that has a price smaller than maxPrice
 	if (maxPrice) {
 		pool.query(
 			`SELECT * FROM meals WHERE price <= ${maxPrice}`,
@@ -142,19 +140,34 @@ router.get("/", (req, res) => {
 			`SELECT * FROM meals LIMIT ${limit}`,
 			(error, results, fields) => {
 				if (error) {
-					return res.send(error);
-				}
-				res.json(results);
-			}
-		);
-	} else {
-    pool.query ('SELECT * FROM meals'), (error, results, fields) => {
+      }
+      response.json(results);
+    });
+  }
+  if (createdAfter) {
+    pool.query (`SELECT * FROM meals WHERE createdAt >= '${createdAfter}'`,function (error, results, fields) {
+        if (error) {
+          return response.send(error);
+        }
+        response.json(results);
+      }
+    );
+  }
+  if (limit) {
+    pool.query (`SELECT * FROM meals LIMIT ${limit}`, function(error,results,fields ) {
       if (error) {
-        return res.send(error);
-      } 
-      res.json(results);
-    }
-	}
+        return response.send(error);
+      }
+      response.json(results);
+    });
+  } else {
+    pool.query ('SELECT * FROM meals', function(error, results, fields) {
+      if (error) {
+        return response.send(error);
+      }
+      response.json(results);
+    });
+  }
 });
 
 module.exports = router;
