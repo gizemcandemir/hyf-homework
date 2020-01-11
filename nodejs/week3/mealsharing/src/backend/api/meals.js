@@ -81,6 +81,8 @@ router.get("/", (req, res) => {
 	const { title } = req.query;
 	const { createdAfter } = req.query;
 	const { limit } = req.query;
+
+	// Get meals that has a price smaller than maxPrice
 	if (maxPrice) {
 		pool.query(
 			`SELECT * FROM meals WHERE price <= ${maxPrice}`,
@@ -91,6 +93,7 @@ router.get("/", (req, res) => {
 				res.json(results);
 			}
 		);
+
 		//Get meals that still has available reservations
 	} else if (availableReservations) {
 		pool.query(
@@ -108,6 +111,7 @@ router.get("/", (req, res) => {
 				res.json(results);
 			}
 		);
+
 		//Get meals that partially match a title
 	} else if (title) {
 		const titleFromQuery = title
@@ -123,6 +127,7 @@ router.get("/", (req, res) => {
 				res.json(results);
 			}
 		);
+
 		//Get meals that has been created after the date
 	} else if (createdAfter) {
 		pool.query(
@@ -134,6 +139,7 @@ router.get("/", (req, res) => {
 				res.json(results);
 			}
 		);
+
 		//Only specific number of meals
 	} else if (limit) {
 		pool.query(
@@ -143,25 +149,8 @@ router.get("/", (req, res) => {
       }
       response.json(results);
     });
-  }
-  if (createdAfter) {
-    pool.query (`SELECT * FROM meals WHERE createdAt >= '${createdAfter}'`,function (error, results, fields) {
-        if (error) {
-          return response.send(error);
-        }
-        response.json(results);
-      }
-    );
-  }
-  if (limit) {
-    pool.query (`SELECT * FROM meals LIMIT ${limit}`, function(error,results,fields ) {
-      if (error) {
-        return response.send(error);
-      }
-      response.json(results);
-    });
   } else {
-    pool.query ('SELECT * FROM meals', function(error, results, fields) {
+    pool.query ('SELECT * FROM meals', (error, results, fields) => {
       if (error) {
         return response.send(error);
       }
