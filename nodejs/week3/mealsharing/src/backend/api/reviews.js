@@ -8,7 +8,7 @@ router.use(bodyParser.json());
 
 // GET
 router.get("/", (req, res) => {
-	pool.query("SELECT * from reservations", (error, results, fields) => {
+	pool.query("SELECT * from reviews", (error, results, fields) => {
 		if(error) {
 			return res.send(error);
 		}
@@ -18,9 +18,9 @@ router.get("/", (req, res) => {
 
 // POST
 router.post("/", (req, res) => {
-	const newReservation = req.body;
+	const newReview = req.body;
 
-	pool.query("INSERT INTO reservations SET ?", newReservation, (error, results, fields) => {
+	pool.query("INSERT INTO reviews SET ?", newReview, (error, results, fields) => {
 		if (error) {
 			return res.send(error);
 		} else {
@@ -32,7 +32,7 @@ router.post("/", (req, res) => {
 // GET by id
 router.get("/:id", (req, res) => {
 	const { id } = req.params;
-	pool.query(`SELECT * FROM reservations WHERE id = ${id}`, (
+	pool.query(`SELECT * FROM reviews WHERE id = ${id}`, (
 		error,
 		results,
 		fields
@@ -48,13 +48,13 @@ router.get("/:id", (req, res) => {
 router.put("/:id", (req, res) => {
 	const idFromQuery = req.params.id;
 	pool.query(
-		"UPDATE reservations SET name=?, email=?, mealId=? where id=?",
+		"UPDATE reviews SET name=?, email=?, mealId=? where id=?",
 		[req.body.name, req.body.email, req.body.mealId, idFromQuery],
 		(error, results, fields) => {
 			if (error) {
 				return res.send(error);
 			}
-			res.send(`Reservation with id ${idFromQuery} is updated`);
+			res.send(`Review with id ${idFromQuery} is updated`);
 		}
 	);
 });
@@ -62,7 +62,7 @@ router.put("/:id", (req, res) => {
 // DELETE
 router.delete("/:id", (req, res) => {
 	const idFromQuery = req.params.id;
-	pool.query(`DELETE FROM reservations WHERE id = ${idFromQuery}`, (
+	pool.query(`DELETE FROM reviews WHERE id = ${idFromQuery}`, (
 		error,
 		results,
 		fields
@@ -70,7 +70,7 @@ router.delete("/:id", (req, res) => {
 		if (error) {
 			return res.send(error);
 		}
-		res.send(`Reservation with id ${idFromQuery} is deleted`);
+		res.send(`Review with id ${idFromQuery} is deleted`);
 	});
 });
 

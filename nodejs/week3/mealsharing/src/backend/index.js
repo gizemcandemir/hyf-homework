@@ -1,21 +1,26 @@
 const express = require("express");
 const app = express();
-const router = express.Router();
 const mealsRouter = require("./api/meals");
+const reservationsRouter = require("./api/reservations");
+const reviewsRouter = require("./api/reviews");
+const router = express.Router();
 
 const port = process.env.PORT || 5000;
+// For week4 no need to look into this!
+/* const path = require("path"); */
+/* // Serve the built client html
+const buildPath = path.join(__dirname, "../../dist");
+app.use(express.static(buildPath)); */
 
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }));
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 
-app.use("/api/meals", mealsRouter);
+router.use("/meals", mealsRouter);
+router.use("/reservations", reservationsRouter);
+router.use("/reviews", reviewsRouter);
 app.use("/api", router);
-
-app.get("/", (req, res) => {
-  res.send("Mealsharing");
-});
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}...`);
