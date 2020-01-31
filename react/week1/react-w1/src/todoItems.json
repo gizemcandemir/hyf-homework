@@ -1,19 +1,17 @@
-[{
-	"id": 1,
-	"title": "Get out of bed",
-	"when": "2017-09-13",
-	"status": "done"
-},
-{
-	"id": 2,
-	"title": "Brush teeth",
-	"when": "2017-09-14",
-	"status": "not-done"
-},
-{
-	"id": 3,
-	"title": "Eat breakfast",
-	"when": "2017-09-15",
-	"status": "done"
-}
+[
+	{
+		"id": 1,
+		"title": "Get out of bed",
+		"when": "2017-09-13"
+	},
+	{
+		"id": 2,
+		"title": "Brush teeth",
+		"when": "2017-09-14"
+	},
+	{
+		"id": 3,
+		"title": "Eat breakfast",
+		"when": "2017-09-15"
+	}
 ]
