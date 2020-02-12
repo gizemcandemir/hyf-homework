@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Benjamin Hughes",
+    "email": "benjamin@hughes.dk",
+    "mealId": 1
+  },
+  {
+    "id": 2,
+    "name": "Gizem Candemir",
+    "email": "gizem@candemir.dk",
+    "mealId": 3
+  },
+  {
+    "id": 3,
+    "name": "Oya Kilicoglu",
+    "email": "oya@me.dk",
+    "mealId": 2
+  },
+  {
+    "id": 4,
+    "name": "Dara Kilicoglu",
+    "email": "dara@me.dk",
+    "mealId": 4
+  }
+]
