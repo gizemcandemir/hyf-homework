@@ -11,7 +11,7 @@ function App() {
 		setTodos([
 			...myTodoList,
 			{
-				id: myTodoList.length + 1,
+				id: Math.max(...myTodoList.map(item => item.id)) + 1,
 				description: randomText(15)
 			}
 		]);
@@ -24,7 +24,7 @@ function App() {
 	const changeTodoStatus = id => {
 		setTodos(
 			myTodoList.map(item =>
-				item.id === id ? { ...myTodoList, completed: !item.completed } : item
+				item.id === id ? { ...item, completed: !item.completed } : item
 			)
 		);
 	};
