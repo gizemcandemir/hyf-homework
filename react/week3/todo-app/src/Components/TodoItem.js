@@ -1,28 +1,33 @@
-import React from "react";
+import React, {useState} from "react";
 import Border from "./Border";
 
 function TodoItem({
 	id,
 	description,
 	completed,
-	isEditing,
 	deleteTodo,
 	editTodo,
 	changeTodoStatus,
-	deadline,
-	descriptionChange
+	deadline
 }) {
+
+	const [edit, setEdit] = useState(false);
+	const [newValue, setNewValue] = useState(description);
+
+	const editingItem = id => {
+		if (edit) 
+		editTodo(id, newValue);
+		setEdit(!edit)
+	}
 	
 	return (
 		<Border>
 			<li className={`${completed ? "completed" : ""}`}>
-				{isEditing ? (
+				{edit ? (
 					<input
 						type="text"
-						name="description"
-						// ref={inputRef}
 						value={description}
-						onChange={event => descriptionChange(id, event.target.value)}
+						onChange={event => setNewValue(id, event.target.value)}
 					/>
 				) : (
 					<>
@@ -31,7 +36,6 @@ function TodoItem({
 				)}
 				<input
 					type="checkbox"
-					name="completed"
 					value={completed}
 					onChange={() => changeTodoStatus(id)}
 				/>
@@ -40,9 +44,9 @@ function TodoItem({
 				</button>
 				<button
 					className="item-edit-button"
-					onClick={() => editTodo(id, description)}
+					onClick={() => editingItem(id, description)}
 				>
-					{!isEditing ? "Edit" : "Update"}
+					{!edit ? "Edit" : "Update"}
 				</button>
 			</li>
 		</Border>

@@ -19,8 +19,7 @@ function App() {
 			{
 				id: Math.max(...myTodoList.map(item => item.id)) + 1,
 				description: value,
-				deadline,
-				isEditing: false
+				deadline
 			}
 		]);
 	};
@@ -37,12 +36,11 @@ function App() {
 		);
 	};
 
-	const editTodo = (id, newValue) => {
-		setTodos(prev =>
-			prev.map(todoItem => {
+	const editTodo = (id, value) => {
+		setTodos(
+			myTodoList.map(todoItem => {
 				if (todoItem.id === id) {
-					todoItem.isEditing = !todoItem.isEditing;
-					return { ...todoItem, description: newValue };
+					return { ...todoItem, description: value };
 				}
 				return todoItem;
 			})
