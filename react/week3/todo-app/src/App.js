@@ -13,11 +13,11 @@ function App() {
 			.then(todoList => setTodos(todoList));
 	}, []);
 
-	const addTodo = (value, deadline) => {
+	const addTodo = (id, value, deadline) => {
 		setTodos([
 			...myTodoList,
 			{
-				id: Math.max(...myTodoList.map(item => item.id)) + 1,
+				id: id,
 				description: value,
 				deadline
 			}
@@ -25,7 +25,10 @@ function App() {
 	};
 
 	const deleteTodo = id => {
-		setTodos([...myTodoList.filter(item => item.id !== id)]);
+		console.log(myTodoList);
+		// console.log([...myTodoList].find(item => item.id === id));
+
+		setTodos([...myTodoList].find(item => item.id === id));
 	};
 
 	const changeTodoStatus = id => {

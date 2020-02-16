@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Border from "./Border";
 
 function TodoItem({
@@ -10,24 +10,21 @@ function TodoItem({
 	changeTodoStatus,
 	deadline
 }) {
-
 	const [edit, setEdit] = useState(false);
 	const [newValue, setNewValue] = useState(description);
 
 	const editingItem = id => {
-		if (edit) 
-		editTodo(id, newValue);
-		setEdit(!edit)
-	}
-	
+		if (edit) editTodo(id, newValue);
+		setEdit(!edit);
+	};
 	return (
 		<Border>
 			<li className={`${completed ? "completed" : ""}`}>
 				{edit ? (
 					<input
 						type="text"
-						value={description}
-						onChange={event => setNewValue(id, event.target.value)}
+						value={newValue}
+						onChange={event => setNewValue(event.target.value)}
 					/>
 				) : (
 					<>
@@ -53,4 +50,12 @@ function TodoItem({
 	);
 }
 
-export default TodoItem;
+function areEqual(prevProps, nextProps) {
+	return (
+		prevProps.description === nextProps.description &&
+		prevProps.completed === nextProps.completed
+	);
+}
+
+export default React.memo(TodoItem, areEqual);
+// export default TodoItem;

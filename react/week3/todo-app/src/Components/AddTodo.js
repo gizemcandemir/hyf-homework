@@ -1,10 +1,16 @@
 import React, { useState } from "react";
-
+import uuidv4 from 'uuid/v4';
 
 function AddTodo({ addTodo }) {
 	const [value, setValue] = useState("");
 	const [deadline, setDeadline] = useState("");
   const [date, setDate] = useState("");
+  const [id, setId] = useState("");
+
+	const submitForm = () => { 
+		setId(uuidv4());
+		addTodo(id, value, deadline);
+	}
 
 	return (
 		<div className="add-todo-form">
@@ -34,7 +40,7 @@ function AddTodo({ addTodo }) {
 				</label>
 			</form>
 			<br />
-			<button onClick={() => addTodo(value, deadline)}>Add todo</button>
+			<button onClick={() => submitForm() }>Add todo</button>
 		</div>
 	);
 }
