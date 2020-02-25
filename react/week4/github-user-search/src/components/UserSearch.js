@@ -1,22 +1,16 @@
-import React, { useContext } from './node_modules/react'
-import { SearchContext } from '../contexts/searchContext'
+import React, { useContext } from "./node_modules/react";
+import { SearchContext } from "../contexts/searchContext";
 
 function UserSearch() {
-  const searchContext = useContext(SearchContext)
-  const { handleSubmit, handleSearchChange } = searchContext
+	const searchContext = useContext(SearchContext);
+	const { handleSubmit } = searchContext;
 
-  return (
-    <form onSubmit={(e) => handleSubmit(e)}>
-      <input 
-        type="text"
-        placeholder="search user"
-        id="query"
-        // onChange={(e) => handleSearchChange(e)
-        }
-      />
-      <button type="submit">Search</button>
-    </form>
-  )
+	return (
+		<form onSubmit={e => handleSubmit(e)}>
+			<input type="text" placeholder="search user" id="query" />
+			<button type="submit">Search</button>
+		</form>
+	);
 }
 
-export default UserSearch
+export default UserSearch;

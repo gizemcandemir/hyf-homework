@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 // import githubRequestSetting from "../helpers/githubSettings.js";
 
-const SearchContext = React.createContext();
+const SearchContext = createContext();
 
-const SearchProvider  = props => {
+const SearchProvider = props => {
 	const [loading, setLoading] = useState(true);
 	const [query, setQuery] = useState("");
 	const [userList, setUserList] = useState([]);
