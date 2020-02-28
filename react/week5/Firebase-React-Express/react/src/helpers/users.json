@@ -1,0 +1,20 @@
+[  
+  {  
+     "id": 1,
+     "name":"Peter Hansen",
+     "email":"peterhansen@gmail.com",
+     "role":"employee"
+  },
+  {  
+     "id": 2,
+     "name":"Natalia Smith",
+     "email":"nataliasmith@gmail.com",
+     "role":"employee"
+  },
+  {  
+     "id": 3,
+     "name":"Benjamin Hughes",
+     "email":"benjaminhughes@gmail.com",
+     "role":"employee"
+  }
+]

@@ -29,7 +29,7 @@ export default function Main () {
                 setLoadingState(false)
             })();
         } else {
-            setContent("Please login to see main content");
+            setContent("Please login to enter your shift");
         }
     }, [user])
 

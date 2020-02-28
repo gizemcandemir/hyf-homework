@@ -3,7 +3,6 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 
 function Firebase () {
-
     const providers = {
         googleProvider: new firebase.auth.GoogleAuthProvider(),
     };
@@ -34,9 +33,4 @@ function Firebase () {
     }
 }
 
-
 export default Firebase();
-
-
-
-
