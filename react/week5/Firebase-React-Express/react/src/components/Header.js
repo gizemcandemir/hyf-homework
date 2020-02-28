@@ -11,7 +11,7 @@ function Header(props) {
 		<header className="header">
 			<h2>Employee Shift List</h2>
 			{user ? <p>Hello, {user.displayName}</p> : <p>Please sign in.</p>}
-			<EmailLogin /> or 
+			<EmailLogin firebase={firebaseInst} /> or 
 			<GoogleOAuth firebase={firebaseInst} />
 			{props.children}
 		</header>

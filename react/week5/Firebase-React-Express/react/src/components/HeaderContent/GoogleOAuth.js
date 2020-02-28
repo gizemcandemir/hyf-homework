@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { UserContext } from "../../App.js";
 
 function GoogleOAuth({ firebase }) {
+
 	const user = useContext(UserContext);
 
 	return (
