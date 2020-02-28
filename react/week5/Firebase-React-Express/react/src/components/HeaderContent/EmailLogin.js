@@ -1,11 +1,7 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../../App.js";
-// import firebase from "../../helpers/firebase";
+import firebase from "../../helpers/firebase";
 import "firebase/auth";
-
-import firebaseConfig from "../../helpers/config";
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
 
 function EmailLogin({ firebase }) {
 	const [loginState, setLoginState] = useState(false);
