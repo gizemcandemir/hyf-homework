@@ -10,8 +10,15 @@ function Header(props) {
 	return (
 		<header className="header">
 			<h2>Employee Shift List</h2>
-			{user ? <p>Hello, {user.displayName}</p> : <p>Please sign in.</p>}
-			<EmailLogin /> or
+			{user 
+				? 
+				<p>Hello, {user.displayName}</p> 
+				: 
+				<>
+					<p>Please sign in.</p>
+					<EmailLogin /> or 
+				</>
+			}
 			<GoogleOAuth firebase={firebaseInst} />
 			{props.children}
 		</header>
