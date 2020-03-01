@@ -1,7 +1,5 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../../App.js";
-import firebase from "../../helpers/firebase";
-import "firebase/auth";
 
 function EmailLogin({ firebase }) {
 	const [loginState, setLoginState] = useState(false);
@@ -22,8 +20,7 @@ function EmailLogin({ firebase }) {
 		e.preventDefault();
 		try {
 			const result = await firebase
-				.auth()
-				.signInWithEmailAndPassword(username, password);
+				.signInEmailAndPassword(username, password);
 			setLoginState(true);
 		} catch (err) {
 			console.log(err);
