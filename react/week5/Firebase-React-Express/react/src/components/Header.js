@@ -12,14 +12,17 @@ function Header(props) {
 			<h2>Employee Shift List</h2>
 			{user 
 				? 
-				<p>Hello, {user.displayName}</p> 
+				<>
+					<p>Hello, {user.displayName}</p> 
+					<button onClick={() => firebaseInst.signOut()}>Sign out</button>
+				</>
 				: 
 				<>
 					<p>Please sign in.</p>
-					<EmailLogin /> or 
+					<EmailLogin firebase={firebaseInst} /> or 
+					<GoogleOAuth firebase={firebaseInst} />
 				</>
 			}
-			<GoogleOAuth firebase={firebaseInst} />
 			{props.children}
 		</header>
 	);

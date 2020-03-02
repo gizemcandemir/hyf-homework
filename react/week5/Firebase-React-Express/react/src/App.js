@@ -62,7 +62,7 @@ function App() {
 								<Link to="/home">Home</Link>
 							</li>
 							<li>
-								<Link to="/see-shifts">See Current Shift List</Link>
+								<Link to="/shifts">See Current Shift List</Link>
 							</li>
 							<li>
 								<Link to="/add-shift">Add Shift</Link>
@@ -74,7 +74,7 @@ function App() {
 					<Route path="/home">
 						<Main />
 					</Route>
-					<Route path="/see-shifts">
+					<Route path="/shifts">
 						<ShiftList
 							visibility={visibility}
 							setVisibility={setVisibility}

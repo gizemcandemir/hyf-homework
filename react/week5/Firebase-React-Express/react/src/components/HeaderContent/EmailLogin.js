@@ -17,7 +17,7 @@ function EmailLogin({ firebase }) {
 		setPassword(e.target.value);
 	};
 
-	async function signIn(e, username, password) {
+	async function signIn(e) {
 		e.preventDefault();
 		try {
 			const result = await firebase.signInEmailAndPassword(username, password);
@@ -26,7 +26,6 @@ function EmailLogin({ firebase }) {
 			console.log(err);
 		}
 	}
-	console.log(loginState);
 
 	return (
 		<form onSubmit={signIn}>
