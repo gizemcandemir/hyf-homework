@@ -1,19 +1,19 @@
 import React, { useContext } from "react";
+import logo from "../../images/btn_google_signin_light_normal_web@2x.png";
 import { UserContext } from "../../App.js";
 
 function GoogleOAuth({ firebase }) {
 	const user = useContext(UserContext);
 
 	return (
-		<div>
-			{user ? (
-				<button onClick={() => firebase.signOut()}>Sign out</button>
-			) : (
-				<button onClick={() => firebase.signInGoogle()}>
-					Sign in with Google
-				</button>
-			)}
-		</div>
+		<>
+			<img
+				src={logo}
+				className="App-logo"
+				alt="logo"
+				onClick={() => firebase.signInGoogle()}
+			/>
+		</>
 	);
 }
 

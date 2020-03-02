@@ -34,9 +34,9 @@ export default function AddShift () {
     }, [user])
 
     return (
-        <>
+        <div className="main">
             {loadingState ? <Loader/> : ""} 
             <h2>{content}</h2>
-        </>
+        </div>
     )
 }

@@ -1,5 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
+import "./css/main.css";
 import Header from "./components/Header.js";
+import Navbar from "./components/Navbar";
 import Main from "./components/Main.js";
 import ShiftList from "./components/ShiftList";
 import AddShiftForm from "./components/AddShiftForm";
@@ -16,13 +18,13 @@ function App() {
 	const [shiftItems, setShiftItems] = useState([]);
 	const [visibility, setVisibility] = useState(false);
 
-	useEffect(()=> {
+	useEffect(() => {
 		fetch(
 			"https://gist.githubusercontent.com/benna100/5fd674171ea528d7cd1d504e9bb0ca6f/raw"
 		)
-		.then(fetchedUserObject => fetchedUserObject.json())
-		.then(shiftItems => setShiftItems)
-	}, [])
+			.then(fetchedUserObject => fetchedUserObject.json())
+			.then(shiftItems => setShiftItems);
+	}, []);
 
 	useEffect(() => {
 		setVisibility(false);
@@ -41,35 +43,18 @@ function App() {
 	}, []);
 
 	const addShiftItem = () => {
-		return(
-			<p>add function</p>
-		)
-	}
+		return <p>add function</p>;
+	};
 
 	const deleteShiftItem = () => {
-		return(
-			<p>delete function</p>
-		)
-	}
+		return <p>delete function</p>;
+	};
 
 	return (
 		<Router>
 			<UserContext.Provider value={userState}>
-				<Header>
-					<nav>
-						<ul>
-							<li>
-								<Link to="/home">Home</Link>
-							</li>
-							<li>
-								<Link to="/shifts">See Current Shift List</Link>
-							</li>
-							<li>
-								<Link to="/add-shift">Add Shift</Link>
-							</li>
-						</ul>
-					</nav>
-				</Header>
+				<Navbar />
+				<Header />
 				<Switch>
 					<Route path="/home">
 						<Main />

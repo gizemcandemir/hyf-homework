@@ -13,7 +13,7 @@ const ShiftList = ({
 	} else {
 		if (user && role === "employee") {
 			return (
-				<div>
+				<div className="main">
 					<AddShiftForm />
 					<ShiftItem />
 				</div>

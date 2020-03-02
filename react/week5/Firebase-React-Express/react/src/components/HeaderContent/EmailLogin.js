@@ -28,15 +28,15 @@ function EmailLogin({ firebase }) {
 	}
 
 	return (
-		<form onSubmit={signIn}>
-			<label>Email</label>
-			<input type="email" value={username} onChange={handleUsername} />
-			<br />
-			<label>Password</label>
-			<input type="password" value={password} onChange={handlePassword} />
-			<br />
-			<button type="submit">Login with email</button>
-		</form>
+			<form onSubmit={signIn}>
+				<label>Email</label>
+				<input type="email" value={username} onChange={handleUsername} />
+				<br />
+				<label>Password</label>
+				<input type="password" value={password} onChange={handlePassword} />
+				<br />
+				<button type="submit">Login with email</button>
+			</form>
 	);
 }
 
