@@ -56,9 +56,7 @@ function App() {
 				<Navbar />
 				<Header />
 				<Switch>
-					<Route path="/home">
-						<Main />
-					</Route>
+					<Route path="/" exact component={Main} />					
 					<Route path="/shifts">
 						<ShiftList
 							visibility={visibility}
