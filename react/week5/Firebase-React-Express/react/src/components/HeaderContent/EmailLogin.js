@@ -1,13 +1,9 @@
-import React, { useState, useContext } from "react";
-import config from "../../helpers/config";
-import { UserContext } from "../../App.js";
+import React, { useState } from "react";
 
 function EmailLogin({ firebase }) {
 	const [loginState, setLoginState] = useState(false);
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
-
-	const user = useContext(UserContext);
 
 	const handleUsername = e => {
 		setUsername(e.target.value);
@@ -20,7 +16,7 @@ function EmailLogin({ firebase }) {
 	async function signIn(e) {
 		e.preventDefault();
 		try {
-			const result = await firebase.signInEmailAndPassword(username, password);
+			await firebase.signInEmailAndPassword(username, password);
 			setLoginState(true);
 		} catch (err) {
 			console.log(err);

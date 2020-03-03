@@ -4,9 +4,17 @@ body {
     font-family: Arial, sans-serif;
 }
 
+h2 {
+    padding-left: 0.5em;
+}
+
 .header {
     border-bottom: 1px solid lightgray;
     padding : 1em;
+}
+
+.header h2 {
+    padding: 0; 
 }
 
 nav {
@@ -15,7 +23,17 @@ nav {
     background: lightsalmon;
 }
 
-nav ul, li {
+li {
+    list-style: none;
+    padding: 1em;
+}
+
+.menu ul {
+    padding: 1em;
+    padding-left: 0.5em;
+}
+
+.menu li {
     color: white;
     list-style: none;
     display: inline;
@@ -29,7 +47,7 @@ nav a {
 }
 
 nav a:hover {
-    color: pink;
+    color: gray;
     text-decoration: none;
 }
 
@@ -90,6 +108,22 @@ button:hover {
     width: 12em;
 }
 
-.main {
-    padding-left: 0.5em;
+.shift-form {
+    padding-left: 1em;
+}
+
+.shift-form form {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.shift-list {
+    padding-left: 1em;
+}
+
+.shift-item {
+    margin-top: 1em;
+    border: 2px solid lightsalmon;
+    padding-left: 1em;
+    width: 40%;
 }

@@ -7,9 +7,9 @@ const AddShiftForm = () => {
     return (
       <div className='shift-form'>
         <form>
-          {/* <label>Hello {user}</label> */}
-          <br />
-          <input type="text" value="gizem"/> 
+          <input type="text" /><br />
+          <input type="datetime-local" /><br />
+          <input type="datetime-local" />
         </form>
         <button>Add shift</button>
       </div>

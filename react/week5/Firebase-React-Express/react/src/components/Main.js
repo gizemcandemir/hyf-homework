@@ -8,7 +8,7 @@ export default function Main() {
 	const [content, setContent] = useState("");
 	const [loadingState, setLoadingState] = useState(false);
 
-	var errorMsg = "Oops! Something went wrong";
+	const errorMsg = "Oops! Something went wrong";
 
 	useEffect(() => {
 		if (user) {
@@ -32,9 +32,9 @@ export default function Main() {
 	}, [user]);
 
 	return (
-		<div className="main">
+		<div>
 			{loadingState ? <Loader /> : ""}
-			<h2 className="main">{content}</h2>
+			<h2>{content}</h2>
 		</div>
 	);
 }
