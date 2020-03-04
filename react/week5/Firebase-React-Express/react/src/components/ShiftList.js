@@ -9,18 +9,24 @@ const ShiftList = () => {
 
 	const [users, setUsers] = useState(userList);
 
-	const price = 100;
-	let totalHr = 0;
+	function getTotalHr(start, end) {
+		let diff = ((new Date(end).getTime() - new Date(start).getTime())/ 1000);
+		diff /= 60 * 60;
+		const totalHr = Math.abs(Math.round(diff));
+		return totalHr;
+	}
 
-	function getTotalHr (start, end) {
-		return totalHr = 4;
+	function getTotalPrice(start, end) {
+		const pricePerHr = 100;
+		const totalPrice = pricePerHr * getTotalHr(start, end)
+		return totalPrice;
 	}
 
 	if (user && user.email === "gizemc@gmail.com") {
 		return (
 			<div className="shift-list">
 				{users.map(user => (
-					<ShiftItem key={user.id} name={user.name} start={user.start} end={user.end} totalHr={getTotalHr(user.start, user.end)} totalPrice={totalHr * price}/>
+					<ShiftItem key={user.id} name={user.name} start={user.start} end={user.end} totalHr={getTotalHr(user.start, user.end)} totalPrice={getTotalPrice(user.start, user.end)}/>
 				))}
 			</div>
 		);
