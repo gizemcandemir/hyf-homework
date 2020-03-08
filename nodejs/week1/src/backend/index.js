@@ -1,11 +1,9 @@
 const express = require("express");
 const app = express();
 
-app.use(function (req, res, next) {
-  console.log('Time:', Date.now());
-  next();
-}, function (req, res, next) {
-  console.log('Request Type:', req.method);
+app.use((req, res, next) => {
+  console.log("method: " + req.method);
+  console.log("date: " + Date.now());
   next();
 });
 
