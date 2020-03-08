@@ -1,28 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import uuidv4 from 'uuid/v4';
 
 function AddTodo({ addTodo }) {
-	const [value, setValue] = useState("");
-	const [deadline, setDeadline] = useState("");
-  const [date, setDate] = useState("");
-  const [id, setId] = useState("");
+	const formRef = useRef(null);
 
-	const submitForm = () => { 
-		setId(uuidv4());
-		addTodo(id, value, deadline);
+	const [description, setDescription] = useState("");
+	const [deadline, setDeadline] = useState("");
+	const [id, setId] = useState("");
+	const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+	
+	
+
+	const submitForm = (e) => { 
+		e.preventDefault();
+		if(description && deadline){
+			setId(uuidv4());
+			addTodo(id, description, deadline);
+			setSuccessMessage("Todo Added");
+			setErrorMessage("");
+		}else {
+			setSuccessMessage("");
+			setErrorMessage("please fill in the todo description and the deadline fields")
+		}
+		setDescription("");
+		setDeadline("")
 	}
 
 	return (
 		<div className="add-todo-form">
-			<form>
+			<form ref={formRef}>
 				<label>
 					Todo description
 					<input
 						type="text"
 						name="description"
-						value={value}
+						value={description}
 						placeholder=""
-						onChange={event => setValue(event.target.value)}
+						onChange={event => {
+							setSuccessMessage("");
+							setDescription(event.target.value)
+						}}
 					/>
 				</label>
 				<br />
@@ -31,16 +49,18 @@ function AddTodo({ addTodo }) {
 					<input
 						type="date"
 						name="date"
-						selected={date}
+						selected={deadline}
 						onChange={event => {
-							setDate(event.target.value);
+							setSuccessMessage("");
 							setDeadline(event.target.value);
 						}}
 					/>
 				</label>
+				<br />
+				<button onClick={(e) => submitForm(e) }>Add todo</button>
 			</form>
-			<br />
-			<button onClick={() => submitForm() }>Add todo</button>
+			{errorMessage !== '' && <span className="red">{errorMessage}</span>}
+			{successMessage !== '' && <span className="green">{successMessage}</span>}
 		</div>
 	);
 }

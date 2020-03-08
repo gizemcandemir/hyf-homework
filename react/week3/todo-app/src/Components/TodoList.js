@@ -1,49 +1,65 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import TodoItem from "./TodoItem";
 import AddTodo from "./AddTodo";
 import Header from "./Header";
 
-function TodoList({
-	items,
-	deleteTodo,
-	changeTodoStatus,
-	addTodo,
-	editTodo,
-	descriptionChange
-}) {
-	const list =
-		items &&
-		items.map(item => {
-			return (
-				<TodoItem
-					key={item.id}
-					id={item.id}
-					description={item.description}
-					completed={item.completed}
-					deleteTodo={deleteTodo}
-					editTodo={editTodo}
-					changeTodoStatus={changeTodoStatus}
-					deadline={item.deadline}
-					descriptionChange={descriptionChange}
-				/>
-			);
-		});
+const TodoList = (props) => {
+	const [todos, setTodos] = useState([]);
 
-	if (list.length === 0) {
-		return (
-			<div className="todo">
-				<Header />
-				<AddTodo addTodo={addTodo} />
-				<p className="center-text">No items</p>
-			</div>
-		);
+	useEffect(() => {
+		fetch(
+			"https://gist.githubusercontent.com/benna100/391eee7a119b50bd2c5960ab51622532/raw"
+		)
+			.then(res => res.json())
+			.then(todoList => setTodos(todoList));
+	}, []);
+
+	const addTodo = (id, description, deadline) => {
+		setTodos([
+			...todos,
+			{
+				id,
+				description,
+				deadline
+			}
+		]);
+	};
+
+	
+	const deleteTodo = id => {
+		setTodos(prevState => prevState.filter(todo =>{ 
+			return todo.id !== id
+		}));
+	
 	}
+
+	const editTodoItem = (id, textValue, completed) => {
+		const todosArray = todos;
+		todos.filter((todoItem, index) => {
+			if (todoItem.id === id) {
+					return todosArray[index].description = textValue;
+			}
+			return todoItem;
+		});
+		setTodos(todosArray);
+	};
 
 	return (
 		<div className="todo">
 			<Header />
 			<AddTodo addTodo={addTodo} />
-			{list}
+			{todos.length ? 
+				todos.map(todo => {
+					return (
+						<TodoItem
+							key={todo.id}
+							todo={todo}
+							deleteTodo={deleteTodo}
+							editTodoItem={editTodoItem}
+						/>
+					);
+				}) : <p className="center-text">No items</p>
+			}
 		</div>
 	);
 }
