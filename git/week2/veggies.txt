@@ -1,6 +1,5 @@
 tomato
 onion
-spring onion
 pumpkin
 paprika
 cauliflower
