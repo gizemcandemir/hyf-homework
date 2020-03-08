@@ -8,22 +8,22 @@ const app = express();
 app.use(bodyParser.json());
 
 app.get('/calculator', (req, res) => {
-	const queryData = Object.values(req.body);
-	res.send(`${calculate(queryData)}`);
+	const paramsFromQuery = Object.values(req.body);
+	res.send(`${calculate(paramsFromQuery)}`);
 });
 
 // {	"num1": 1,	"num2": 2,	"num3": 4,	"method": "division" }
-function calculate(data) {
-	const method = data[data.length-1];
-	data.pop();
+function calculate(numberParams) {
+	const method = numberParams[numberParams.length-1];
+	numberParams.pop();
 	if (method === "addition") {
-		return data.reduce((sum, value) => (sum = sum + value), 0);
+		return numberParams.reduce((sum, value) => (sum = sum + value), 0);
 	} else if (method === "subtraction") {
-		return data.reduce((sum, value) => (sum = sum - value), 0);
+		return numberParams.reduce((sum, value) => (sum = sum - value), 0);
 	} else if (method === "multiplication") {
-		return data.reduce((sum, value) => (sum = sum * value), 1);
+		return numberParams.reduce((sum, value) => (sum = sum * value), 1);
 	} else if (method === "division") {
-		return data.reduce((sum, value) => (sum = sum / value), 1);
+		return numberParams.reduce((sum, value) => (sum = sum / value), 1);
 	} else {
 		return `Method is not recognized`;
 	}
@@ -31,35 +31,35 @@ function calculate(data) {
 
 // calculator/add?firstParam=1&secondParam=2
 app.get('/calculator/add', (req, res) => {
-	const queryData = [].concat.apply([], Object.values(req.query));
-	const data = queryData.map(Number);
-	const result = data.reduce((sum, value) => (sum = sum + value), 0);
-	res.send(`Query params: ${queryData} and the result is: ${result}`);
+	const paramsFromQuery = [].concat.apply([], Object.values(req.query));
+	const numbersToCalculate = paramsFromQuery.map(Number);
+	const calculationResult = numbersToCalculate.reduce((sum, value) => (sum = sum + value), 0);
+	res.send(`Query params: ${paramsFromQuery} and the result is: ${calculationResult}`);
 })
 
 // calculator/subtract?firstParam=1&secondParam=2
 app.get('/calculator/subtract', (req, res) => {
-	const queryData = [].concat.apply([], Object.values(req.query));
-	const data = queryData.map(Number);
-	console.log(data[0]);
-	const result = data.reduce((sum, value) => (sum = sum - value));
-	res.send(`Query params: ${queryData} and the result is: ${result}`);
+	const paramsFromQuery = [].concat.apply([], Object.values(req.query));
+	const numbersToCalculate = paramsFromQuery.map(Number);
+	console.log(numbersToCalculate[0]);
+	const calculationResult = numbersToCalculate.reduce((sum, value) => (sum = sum - value));
+	res.send(`Query params: ${paramsFromQuery} and the result is: ${calculationResult}`);
 })
 
 // calculator/multiply?firstParam=1&secondParam=2&secondParam=4
 app.get('/calculator/multiply', (req, res) => {
-	const queryData = [].concat.apply([], Object.values(req.query));
-	const data = queryData.map(Number);
-	const result = data.reduce((sum, value) => (sum = sum * value), 1);
-	res.send(`Query params: ${queryData} and the result is: ${result}`);
+	const paramsFromQuery = [].concat.apply([], Object.values(req.query));
+	const numbersToCalculate = paramsFromQuery.map(Number);
+	const calculationResult = numbersToCalculate.reduce((sum, value) => (sum = sum * value), 1);
+	res.send(`Query params: ${paramsFromQuery} and the result is: ${calculationResult}`);
 })
 
 // calculator/divide?firstParam=1&secondParam=2&secondParam=4
 app.get('/calculator/divide', (req, res) => {
-	const queryData = [].concat.apply([], Object.values(req.query));
-	const data = queryData.map(Number);
-	const result = data.reduce((sum, value) => (sum = sum / value), 1);
-	res.send(`Query params: ${queryData} and the result is: ${result}`);
+	const paramsFromQuery = [].concat.apply([], Object.values(req.query));
+	const numbersToCalculate = paramsFromQuery.map(Number);
+	const calculationResult = numbersToCalculate.reduce((sum, value) => (sum = sum / value), 1);
+	res.send(`Query params: ${paramsFromQuery} and the result is: ${calculationResult}`);
 })
 
 app.listen(PORT, ()=> console.log(`Server started at ${PORT}`));
