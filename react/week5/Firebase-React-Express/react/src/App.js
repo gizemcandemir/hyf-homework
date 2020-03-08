@@ -14,12 +14,6 @@ function App() {
 	const [userState, setUserState] = useState(null);
 
 	useEffect(() => {
-		fetch("./helpers/userList.js").then(fetchedUserObject =>
-			fetchedUserObject.json()
-		);
-	}, []);
-
-	useEffect(() => {
 		firebaseInst.init();
 		firebaseInst.getAuth().onAuthStateChanged(function(user) {
 			if (user) {

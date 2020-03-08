@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import AddShiftForm from "./AddShiftForm";
+import React, { useState, useEffect, useContext } from "react";
 import ShiftItem from "./ShiftItem";
 import { UserContext } from "../App.js";
 import userList from "../helpers/userList";
@@ -8,6 +7,12 @@ const ShiftList = () => {
 	const user = useContext(UserContext);
 
 	const [users, setUsers] = useState(userList);
+
+	useEffect(() => {
+		fetch("./helpers/userList.js")
+		.then(fetchedUserObject => fetchedUserObject.json()
+		);
+	}, []);
 
 	function getTotalHr(start, end) {
 		let diff = ((new Date(end).getTime() - new Date(start).getTime())/ 1000);
